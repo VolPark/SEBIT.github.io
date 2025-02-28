@@ -236,61 +236,70 @@
   </script>
 
   <!-- Inline JS pro "Zjistit více", toggle mobilního menu a skrytí menu při výběru -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // "Zjistit více" tlačítka
-      document.querySelectorAll('.more-btn').forEach(function(button) {
-        button.addEventListener('click', function(e) {
-          e.preventDefault();
-          // Odstraníme všechny existující extra sekce
-          document.querySelectorAll('.more-info').forEach(el => el.remove());
-          // Získáme text z data-text atributu
-          const text = this.dataset.text;
-          if (!text) {
-            console.warn("Atribut data-text nebyl nalezen u tlačítka!");
-          }
-          // Najdeme rodičovský element (service-card nebo fallback na section)
-          let parentElement = this.closest('.service-card') || this.closest('section');
-          if (!parentElement) {
-            console.error("Nepodařilo se najít rodičovský element.");
-            return;
-          }
-          // Vytvoříme novou sekci s textem
-          const extraSection = document.createElement('section');
-          extraSection.className = "py-20 bg-white more-info";
-          extraSection.style.display = "block";
-          extraSection.style.opacity = "1";
-          extraSection.innerHTML = `
-            <div class="container mx-auto px-4">
-              <div class="text-center mb-12">
-                <p>${text}</p>
-              </div>
-            </div>
-          `;
-          // Vložíme novou sekci za rodičovský element
-          parentElement.insertAdjacentElement('afterend', extraSection);
-          // Obnovíme AOS
-          if (typeof AOS !== 'undefined') {
-            AOS.refresh();
-          }
-        });
-      });
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // "Zjistit více" tlačítka
+  document.querySelectorAll('.more-btn').forEach(function(button) {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      // Odstraníme všechny existující extra sekce
+      document.querySelectorAll('.more-info').forEach(el => el.remove());
+      // Získáme text z data-text atributu
+      const text = this.dataset.text;
+      if (!text) {
+        console.warn("Atribut data-text nebyl nalezen u tlačítka!");
+      }
       
-      // Toggle mobilního menu
-      const menuButton = document.getElementById("mobile-menu-button");
-      const menu = document.getElementById("mobile-menu");
-
-      menuButton.addEventListener("click", () => {
-        menu.classList.toggle("hidden");
-      });
+      let parentElement;
+      // Kontrola šířky okna - pro mobilní zobrazení (<768px)
+      if(window.innerWidth < 768) {
+        // V mobilním zobrazení vložíme sekci hned za přímého rodiče tlačítka
+        parentElement = this.parentElement;
+      } else {
+        // Pro desktopové zobrazení ponecháme původní chování
+        parentElement = this.closest('.service-card') || this.closest('section');
+      }
       
-      // Skrytí mobilního menu při kliknutí na odkaz
-      document.querySelectorAll('#mobile-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-          menu.classList.add('hidden');
-        });
-      });
+      if (!parentElement) {
+        console.error("Nepodařilo se najít rodičovský element.");
+        return;
+      }
+      
+      // Vytvoříme novou sekci s textem
+      const extraSection = document.createElement('section');
+      extraSection.className = "py-20 bg-white more-info";
+      extraSection.style.display = "block";
+      extraSection.style.opacity = "1";
+      extraSection.innerHTML = `
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-12">
+            <p>${text}</p>
+          </div>
+        </div>
+      `;
+      // Vložíme novou sekci za vybraný rodičovský element
+      parentElement.insertAdjacentElement('afterend', extraSection);
+      // Obnovíme AOS, pokud je definován
+      if (typeof AOS !== 'undefined') {
+        AOS.refresh();
+      }
     });
-  </script>
+  });
+  
+  // Toggle mobilního menu
+  const menuButton = document.getElementById("mobile-menu-button");
+  const menu = document.getElementById("mobile-menu");
+  menuButton.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+  
+  // Skrytí mobilního menu při kliknutí na odkaz
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+    });
+  });
+});
+</script>
 </body>
 </html>
