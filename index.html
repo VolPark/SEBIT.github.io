@@ -279,6 +279,12 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       // Vložíme novou sekci za vybraný rodičovský element
       parentElement.insertAdjacentElement('afterend', extraSection);
+      
+      // Pokud jsme v mobilním zobrazení, posuneme stránku na začátek nové sekce
+      if(window.innerWidth < 768) {
+        extraSection.scrollIntoView({ behavior: 'smooth' });
+      }
+      
       // Obnovíme AOS, pokud je definován
       if (typeof AOS !== 'undefined') {
         AOS.refresh();
