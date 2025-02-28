@@ -38,9 +38,9 @@
         </ul>
       </nav>
     </div>
-    <!-- Mobilní menu -->
-    <nav id="mobile-menu" class="md:hidden hidden">
-      <ul class="flex flex-col space-y-2 px-4 py-2 bg-white shadow">
+    <!-- Mobilní menu s gradientním přechodem -->
+    <nav id="mobile-menu" class="md:hidden hidden transition-all duration-300">
+      <ul class="flex flex-col space-y-2 px-4 py-2 bg-gradient-to-b from-white to-transparent shadow">
         <li><a href="#hero" class="block hover:text-blue-600">Domů</a></li>
         <li><a href="#Consulting" class="block hover:text-blue-600">Consulting</a></li>
         <li><a href="#Software-development" class="block hover:text-blue-600">Software development</a></li>
@@ -229,42 +229,32 @@
     });
   </script>
 
-  <!-- Inline JS pro "Zjistit více" a toggle mobilního menu -->
+  <!-- Inline JS pro "Zjistit více", toggle mobilního menu a skrytí menu při výběru -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      // "Zjistit více" tlačítka
       document.querySelectorAll('.more-btn').forEach(function(button) {
         button.addEventListener('click', function(e) {
           e.preventDefault();
-    
           // Odstraníme všechny existující extra sekce
           document.querySelectorAll('.more-info').forEach(el => el.remove());
-    
           // Získáme text z data-text atributu
           const text = this.dataset.text;
           console.log("Data text:", text);
-    
           if (!text) {
             console.warn("Atribut data-text nebyl nalezen u tlačítka!");
           }
-    
-          // Nejprve se pokusíme najít rodičovský element s třídou .service-card
-          let parentElement = this.closest('.service-card');
-          if (!parentElement) {
-            // Pokud nenajdeme, fallback na nejbližší section
-            parentElement = this.closest('section');
-          }
+          // Pokusíme se najít rodičovský element s třídou .service-card, nebo fallback na nejbližší section
+          let parentElement = this.closest('.service-card') || this.closest('section');
           if (!parentElement) {
             console.error("Nepodařilo se najít rodičovský element.");
             return;
           }
-    
           // Vytvoříme novou sekci s textem
           const extraSection = document.createElement('section');
           extraSection.className = "py-20 bg-white more-info";
-          // Explicitně nastavíme viditelnost
           extraSection.style.display = "block";
           extraSection.style.opacity = "1";
-    
           extraSection.innerHTML = `
             <div class="container mx-auto px-4">
               <div class="text-center mb-12">
@@ -272,21 +262,26 @@
               </div>
             </div>
           `;
-    
           // Vložíme novou sekci za rodičovský element
           parentElement.insertAdjacentElement('afterend', extraSection);
-    
-          // Obnovíme AOS, pokud je použit
+          // Obnovíme AOS
           if (typeof AOS !== 'undefined') {
             AOS.refresh();
           }
         });
       });
       
-      // Toggle mobilního menu
+      // Toggle mobilního menu při kliknutí na hamburger tlačítko
       document.getElementById("mobile-menu-button").addEventListener("click", function() {
         var menu = document.getElementById("mobile-menu");
         menu.classList.toggle("hidden");
+      });
+      
+      // Skrytí mobilního menu při kliknutí na některý odkaz
+      document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', function() {
+          document.getElementById('mobile-menu').classList.add('hidden');
+        });
       });
     });
   </script>
