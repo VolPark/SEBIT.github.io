@@ -2,81 +2,33 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>SEBIT Solutions | Profesionální IT consulting a vývoj webu</title>
-  <meta name="description" content="SEBIT Solutions nabízí pronájem IT specialistů, bodyshopping, team leasing i kompletní dodávky na klíč. Moderní webová řešení a digitální strategie.">
-  <meta name="keywords" content="SEBIT Solutions, IT consulting, bodyshopping, team leasing, software development, Oracle Forms, základní registry">
-  <meta name="robots" content="index, follow">
-
-  <link rel="canonical" href="https://www.sebit.cz/">
-  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type"        content="website">
-  <meta property="og:title"       content="SEBIT Solutions | Profesionální IT consulting a vývoj webu">
-  <meta property="og:description" content="SEBIT Solutions nabízí pronájem IT specialistů, bodyshopping, team leasing i kompletní dodávky na klíč.">
-  <meta property="og:url"         content="https://www.sebit.cz/">
-  <meta property="og:image"       content="https://www.sebit.cz/logo.png">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:title"       content="SEBIT Solutions | Profesionální IT consulting a vývoj webu">
-  <meta name="twitter:description" content="SEBIT Solutions nabízí pronájem IT specialistů, bodyshopping, team leasing i kompletní dodávky na klíč.">
-  <meta name="twitter:image"       content="https://www.sebit.cz/logo.png">
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "SEBIT Solutions s.r.o.",
-    "url": "https://www.sebit.cz/",
-    "logo": "https://www.sebit.cz/logo.png",
-    "sameAs": [
-      "https://www.linkedin.com/company/sebit-solutions",
-      "https://www.facebook.com/sebitsolutions"
-    ],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+420721405384",
-      "contactType": "customer service",
-      "areaServed": "CZ",
-      "availableLanguage": "cs"
-    }
-  }
-  </script>
-
+  <title>SEBIT Solutions</title>
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="logo_circular.png">
-
   <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <!-- AOS CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/fd3cf42a2f.js" crossorigin="anonymous" defer></script>
+  <script src="https://kit.fontawesome.com/fd3cf42a2f.js" crossorigin="anonymous"></script>
 </head>
 <body class="antialiased text-gray-800">
   <!-- Navigace -->
   <header class="fixed top-0 left-0 right-0 bg-white shadow z-50">
-    <nav class="container mx-auto px-4 py-4 flex justify-between items-center" aria-label="Hlavní navigace">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <!-- Logo v navigaci -->
       <div class="flex items-center">
-        <a href="https://www.sebit.cz/" aria-label="SEBIT Solutions Home">
-          <img src="logo_2.png" alt="SEBIT Solutions Logo" class="h-10 w-auto mr-2" loading="lazy" />
-        </a>
+        <img src="logo_2.png" alt="SEBIT Solutions Logo" class="h-10 w-auto mr-2" />
         <div class="text-xl font-bold">SEBIT Solutions</div>
       </div>
-      <button id="mobile-menu-button"
-              class="md:hidden text-gray-800 focus:outline-none"
-              aria-label="Otevřít hlavní menu"
-              aria-controls="mobile-menu"
-              aria-expanded="false">
+      <!-- Hamburger tlačítko, viditelné na mobilních zařízeních -->
+      <button id="mobile-menu-button" class="md:hidden text-gray-800 focus:outline-none">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
+      <!-- Desktopové menu -->
       <nav class="hidden md:block">
         <ul class="flex space-x-6">
           <li><a href="#hero" class="hover:text-blue-600">Domů</a></li>
@@ -85,15 +37,15 @@
           <li><a href="#kontakt" class="hover:text-blue-600">Kontakt</a></li>
         </ul>
       </nav>
-    </nav>
+    </div>
   </header>
 
   <!-- Mobilní menu -->
-  <nav
-    id="mobile-menu"
+  <nav 
+    id="mobile-menu" 
     class="md:hidden hidden fixed inset-x-0 top-[4.5rem] z-50 transition-all duration-300 ease-out"
   >
-    <ul
+    <ul 
       class="bg-gradient-to-b from-white via-white to-white shadow-lg rounded-b-md px-4 py-4 space-y-4"
     >
       <li><a href="#hero" class="block hover:text-blue-600">Domů</a></li>
@@ -141,7 +93,7 @@
           <p class="text-gray-600 flex-grow">
             Poskytujeme vysoce kvalifikované IT odborníky, kteří posílí váš tým a pomohou vám dosáhnout vašich cílů.
           </p>
-          <a href="#"
+          <a href="#" 
              class="more-btn mt-4 block mx-auto bg-gray-200 text-black px-4 py-2 rounded hover:bg-blue-900 hover:text-white transition"
              data-text="<h2 class='text-3xl font-bold mb-28'>Rozsah rolí v našem portfoliu</h2><div class='mt-8 grid grid-cols-1 md:grid-cols-4 gap-10 text-center'><div class='flex flex-col items-center space-y-2'><i class='fas fa-sitemap text-4xl'></i><h3 class='font-semibold'>Architektura</h3><p class='text-gray-700'>Solution Architect, Enterprise Architect</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-chart-bar text-4xl'></i><h3 class='font-semibold'>Analýza</h3><p class='text-gray-700'>IT Analytik, Business Analytik</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-vial text-4xl'></i><h3 class='font-semibold'>Testování</h3><p class='text-gray-700'>Tester, Test Analyst, Test Manager</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-code text-4xl'></i><h3 class='font-semibold'>Vývoj aplikací</h3><p class='text-gray-700'>Java Developer, .WSO2 Developer, React Developer</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-database text-4xl'></i><h3 class='font-semibold'>Databáze</h3><p class='text-gray-700'>Oracle Developer, ETL Developer</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-project-diagram text-4xl'></i><h3 class='font-semibold'>Řízení a koordinace</h3><p class='text-gray-700'>Project Manager, Scrum Master, Delivery Manager</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-exchange-alt text-4xl'></i><h3 class='font-semibold'>Integrace</h3><p class='text-gray-700'>Integrační Analytik, System Architekt, DevOps</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-cloud text-4xl'></i><h3 class='font-semibold'>Cloudová řešení</h3><p class='text-gray-700'>AWS Developer, Azure Developer, DevOps Engineer</p></div></div>">
             Zjistit více
@@ -153,9 +105,9 @@
           <p class="text-gray-600 flex-grow">
             Sestavíme pro vás na míru vytvořený tým profesionálů, který můžete flexibilně řídit podle svých potřeb.
           </p>
-          <a href="#"
+          <a href="#" 
              class="more-btn mt-4 block mx-auto bg-gray-200 text-black px-4 py-2 rounded hover:bg-blue-900 hover:text-white transition"
-             data-text="<h2 class='text-3xl font-bold mb-28'>Sestavit tým je možné z následujících rolí</h2><div class='mt-8 grid grid-cols-1 md:grid-cols-4 gap-10 text-center'><div class='flex flex-col items-center space-y-2'><i class='fas fa-sitemap text-4xl'></i><h3 class='font-semibold'>Architektura</h3><p class='text-gray-700'>Solution Architect, Enterprise Architect</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-chart-bar text-4xl'></i><h3 class='font-semibold'>Analýza</h3><p class='text-gray-700'>IT Analytik, Business Analytik</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-vial text-4xl'></i><h3 class='font-semibold'>Testování</h3><p class='text-gray-700'>Tester, Test Analyst, Test Manager</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-code text-4xl'></i><h3 class='font-semibold'>Vývoj aplikací</h3><p class='text-gray-700'>Java Developer, .WSO2 Developer, React Developer</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-database text-4xl'></i><h3 class='font-semibold'>Databáze</h3><p class='text-gray-700'>Oracle Developer, ETL Developer</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-project-diagram text-4xl'></i><h3 class='font-semibold'>Řízení a koordinace</h3><p class='text-gray-700'>Project Manager, Scrum Master, Delivery Manager</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-exchange-alt text-4xl'></i><h3 class='font-semibold'>Integrace</h3><p class='text-gray-700'>Integrační Analytik, System Architekt, DevOps</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-cloud text-4xl'></i><h3 class='font-semibold'>Cloudová řešení</h3><p class='text-gray-700'>AWS Developer, Azure Developer, DevOps Engineer</p></div></div>">
+             data-text="<h2 class='text-3xl font-bold mb-28'>Sestavit tým je možné z následujících rolí</h2><div class='mt-8 grid grid-cols-1 md:grid-cols-4 gap-10 text-center'><div class='flex flex-col items-center space-y-2'><i class='fas fa-sitemap text-4xl'></i><h3 class='font-semibold'>Architektura</h3><p class='text-gray-700'>Solution Architect, Enterprise Architect</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-chart-bar text-4xl'></i><h3 class='font-semibold'>Analýza</h3><p class='text-gray-700'>IT Analytik, Business Analytik</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-vial text-4xl'></i><h3 class='font-semibold'>Testování</h3><p class='text-gray-700'>Tester, Test Analyst, Test Manager</p></div><div class='flex flex-col items-center space-y=2'><i class='fas fa-code text-4xl'></i><h3 class='font-semibold'>Vývoj aplikací</h3><p class='text-gray-700'>Java Developer, .WSO2 Developer, React Developer</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-database text-4xl'></i><h3 class='font-semibold'>Databáze</h3><p class='text-gray-700'>Oracle Developer, ETL Developer</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-project-diagram text-4xl'></i><h3 class='font-semibold'>Řízení a koordinace</h3><p class='text-gray-700'>Project Manager, Scrum Master, Delivery Manager</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-exchange-alt text-4xl'></i><h3 class='font-semibold'>Integrace</h3><p class='text-gray-700'>Integrační Analytik, System Architekt, DevOps</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-cloud text-4xl'></i><h3 class='font-semibold'>Cloudová řešení</h3><p class='text-gray-700'>AWS Developer, Azure Developer, DevOps Engineer</p></div></div>">
             Zjistit více
           </a>
         </div>
