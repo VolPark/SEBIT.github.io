@@ -47,8 +47,15 @@
   }
   </script>
   
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg" sizes="32x32" href="favicon_arrow.svg">
+<!-- SVG favicon -->
+<link rel="icon" href="/favicon_arrow.svg" type="image/svg+xml">
+
+<!-- PNG fallback pro starší prohlížeče -->
+<link rel="alternate icon" href="/favicon_arrow.png" type="image/png" sizes="32x32">
+  
+<!-- Volitelně můžete přidat query string, aby se prohlížeč nenaučil z cache starý icon -->
+<link rel="icon" href="/favicon_arrow.svg?v=2" type="image/svg+xml">
+
   <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -270,7 +277,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-800 text-gray-300 py-6">
+  <footer class="bg-sebit-navy text-gray-300 py-6">
     <div class="container mx-auto px-4 text-center">
       <p>&copy; <span id="current-year"></span> SEBIT Solutions. Všechna práva vyhrazena.</p>
     </div>
