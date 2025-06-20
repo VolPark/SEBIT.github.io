@@ -84,25 +84,6 @@
         <img src="/sebit_solutions_light.svg" alt="SEBIT Solutions Logo" class="h-12 w-auto mr-2" />
         <div class="text-xl font-bold"></div>
       </div>
-      <!-- Divize navigace (skrytá, zobrazí se po scrollu) -->
-      <nav id="divisions-nav" class="hidden md:flex space-x-4 items-center ml-8">
-        <a href="https://sebit.cz/solutions" class="flex items-center space-x-1 hover:text-sebit-lime">
-          <img src="/sebit_solutions_light.svg" alt="Solutions" class="h-6 w-auto" />
-          <span class="text-sm">Solutions</span>
-        </a>
-        <a href="https://sebit.cz/labs" class="flex items-center space-x-1 hover:text-sebit-lime">
-          <img src="/sebit_labs_light.svg" alt="Labs" class="h-6 w-auto" />
-          <span class="text-sm">Labs</span>
-        </a>
-        <a href="https://sebit.cz/Medical" class="flex items-center space-x-1 hover:text-sebit-lime">
-          <img src="/sebit_medical_light.svg" alt="Medical" class="h-6 w-auto" />
-          <span class="text-sm">Medical</span>
-        </a>
-        <a href="https://sebit.cz/Academy" class="flex items-center space-x-1 hover:text-sebit-lime">
-          <img src="/sebit_academy_light.svg" alt="Academy" class="h-6 w-auto" />
-          <span class="text-sm">Academy</span>
-        </a>
-      </nav>
       <!-- Hamburger tlačítko, viditelné na mobilních zařízeních -->
       <button id="mobile-menu-button" class="md:hidden text-gray-800 focus:outline-none">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -414,21 +395,6 @@ document.addEventListener("DOMContentLoaded", () => {
       menu.classList.add('hidden');
     });
   });
-  
-  // Zobrazit/skrýt divizní navigaci podle scrollu
-  const divisionsNav = document.getElementById('divisions-nav');
-  const divisionsSection = document.getElementById('divisions');
-  function toggleDivisionsNav() {
-    const rect = divisionsSection.getBoundingClientRect();
-    if (rect.bottom < 0) {
-      divisionsNav.classList.remove('hidden');
-    } else {
-      divisionsNav.classList.add('hidden');
-    }
-  }
-  window.addEventListener('scroll', toggleDivisionsNav);
-  // inicializace při načtení
-  toggleDivisionsNav();
 });
 </script>
 </body>
