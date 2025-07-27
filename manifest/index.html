@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manifest Spolupracovníka | SEBIT Solutions s.r.o. | Tisk A4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Základní styly pro web --- */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FFFFFF;
+        }
+        .sebit-navy {
+            color: #002B5C;
+        }
+        .sebit-lime {
+            color: #C6FF00;
+        }
+        .bg-sebit-navy {
+            background-color: #002B5C;
+        }
+        .bg-sebit-lime {
+            background-color: #C6FF00;
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .icon-container {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .card h2 {
+            color: #002B5C;
+        }
+        .card p {
+            color: #1f2937;
+            flex-grow: 1;
+        }
+        .gemini-feature {
+            border: 1px solid #002B5C;
+        }
+        .gemini-button {
+            background-color: #002B5C;
+            color: #FFFFFF;
+            transition: background-color 0.3s ease;
+        }
+        .gemini-button:hover {
+            background-color: #001f44;
+        }
+        .gemini-button .sparkle {
+            color: #C6FF00;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #002B5C;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* --- Styly pro tisk --- */
+        @media print {
+            @page {
+                size: A4;
+                margin: 2cm;
+            }
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background-color: #FFFFFF !important;
+            }
+            .container {
+                max-width: 100% !important;
+                padding: 0 !important;
+            }
+            .card {
+                box-shadow: none !important;
+                border: 1px solid #cccccc;
+                break-inside: avoid;
+            }
+            .grid {
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 1.5rem;
+            }
+            header, footer {
+                break-after: avoid;
+            }
+            footer {
+                position: fixed;
+                bottom: 1cm;
+                left: 2cm;
+                right: 2cm;
+                text-align: center;
+                font-size: 0.8rem;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto px-4 py-8 md:py-16">
+
+        <!-- Header with Logo -->
+        <header class="text-center mb-12">
+            <img src="https://raw.githubusercontent.com/VolPark/SEBIT.github.io/2120bec3396e9a3f0e8ecbc8ea796f811e262a38/sebit_solutions_light.svg" alt="Logo SEBIT Solutions" class="h-20 mx-auto mb-6">
+            <h1 class="text-4xl md:text-5xl font-bold sebit-navy">Náš Manifest</h1>
+            <p class="text-gray-600 mt-4 text-lg">Zásady, kterými se řídíme v SEBIT Solutions.</p>
+        </header>
+
+        <!-- Manifesto Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Karta 1 -->
+            <div class="card p-6 flex flex-col items-center text-center">
+                <div class="icon-container bg-sebit-navy mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C6FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path><path d="M12 12l-4-4"></path><path d="M12 6v6h6"></path></svg></div>
+                <h2 class="text-xl font-semibold mb-2">1. Transparentní výkaznictví</h2>
+                <p>Práci vykazujeme v reálném čase a v 15minutových blocích. Naše výkazy jsou vždy přesným a pravdivým odrazem odvedené práce.</p>
+            </div>
+            <!-- Karta 2 -->
+            <div class="card p-6 flex flex-col items-center text-center">
+                <div class="icon-container bg-sebit-navy mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C6FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></div>
+                <h2 class="text-xl font-semibold mb-2">2. Otevřená komunikace</h2>
+                <p>Jsme plně transparentní ke klientům i sami k sobě. Důvěra a otevřenost jsou základem naší spolupráce.</p>
+            </div>
+            <!-- Karta 3 -->
+            <div class="card p-6 flex flex-col items-center text-center">
+                <div class="icon-container bg-sebit-navy mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C6FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+                <h2 class="text-xl font-semibold mb-2">3. Úcta a profesionalita</h2>
+                <p>Ke klientům jsme vždy uctiví, milí a profesionální. Budujeme partnerské vztahy založené na vzájemném respektu.</p>
+            </div>
+            <!-- Karta 4 -->
+            <div class="card p-6 flex flex-col items-center text-center">
+                <div class="icon-container bg-sebit-navy mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C6FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19 7-7 3 3-7 7-3-3z"></path><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="m2 2 7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg></div>
+                <h2 class="text-xl font-semibold mb-2">4. Konstruktivní upřímnost</h2>
+                <p>Nic nezatajujeme. Pokud klient dělá chybu, taktně mu to řekneme, vysvětlíme souvislosti a navrhneme řešení.</p>
+            </div>
+            <!-- Karta 5 -->
+            <div class="card p-6 flex flex-col items-center text-center">
+                <div class="icon-container bg-sebit-navy mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C6FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m16.2 7.8-4.9 4.9-2.8-2.8"></path></svg></div>
+                <h2 class="text-xl font-semibold mb-2">5. Partnerství a proaktivita</h2>
+                <p>Nejsme jen dodavatelé. Aktivně přemýšlíme nad projekty klienta a navrhujeme vylepšení, která přinášejí skutečnou hodnotu.</p>
+            </div>
+            <!-- Karta 6 -->
+            <div class="card p-6 flex flex-col items-center text-center">
+                <div class="icon-container bg-sebit-navy mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C6FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.3.05-3.18-.65-.87-1.58-1.53-2.7-1.6-1.12-.08-2.37.2-3.35.98z"></path><path d="M17.5 16.5c1.5 1.26 2 5 2 5s-3.74-.5-5-2c.71-.84-.7-2.3-.05-3.18.65-.87 1.58-1.53 2.7-1.6 1.12-.08 2.37.2 3.35.98z"></path><path d="M9 12a3 3 0 1 0 6 0 3 3 0 1 0-6 0z"></path></svg></div>
+                <h2 class="text-xl font-semibold mb-2">6. Jsme jeden tým</h2>
+                <p>Sdílíme znalosti, pomáháme si a táhneme za jeden provaz. Úspěch klienta je naším společným úspěchem.</p>
+            </div>
+            <!-- Karta 7 -->
+            <div class="card p-6 flex flex-col items-center text-center">
+                <div class="icon-container bg-sebit-navy mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C6FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg></div>
+                <h2 class="text-xl font-semibold mb-2">7. Hrdost na naši práci</h2>
+                <p>Reprezentujeme značku SEBIT Solutions v každém kroku. Naše práce je naší nejlepší vizitkou.</p>
+            </div>
+        </div>
+        
+        <!-- Gemini API Feature Section -->
+        <section id="gemini-feature" class="mt-20 p-8 rounded-2xl gemini-feature no-print">
+            <h2 class="text-3xl font-bold text-center sebit-navy mb-2">Řešitel dilemat <span class="sebit-lime">✨</span></h2>
+            <p class="text-center text-gray-600 mb-8">Nevíte si rady se složitou pracovní situací? Popište ji a získejte radu v souladu s našimi hodnotami.</p>
+            
+            <div class="max-w-2xl mx-auto">
+                <textarea id="dilemma-input" rows="4" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sebit-navy focus:border-sebit-navy transition" placeholder="Např. Klient trvá na řešení, o kterém vím, že není technicky správné a v budoucnu způsobí problémy. Jak mu to mám vysvětlit?"></textarea>
+                <button id="solve-button" class="gemini-button w-full mt-4 py-3 px-6 rounded-lg font-semibold text-lg flex items-center justify-center">
+                    <span class="mr-2">Navrhnout řešení</span> <span class="sparkle">✨</span>
+                </button>
+            </div>
+
+            <div id="gemini-result-container" class="mt-8 max-w-3xl mx-auto hidden">
+                <div id="loader" class="loader mx-auto"></div>
+                <div id="gemini-output" class="p-6 bg-gray-50 rounded-lg border border-gray-200 text-gray-800"></div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center mt-16 text-gray-500">
+            <p>&copy; 2025 SEBIT Solutions s.r.o. Všechna práva vyhrazena.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // --- Helper function to convert Markdown to HTML ---
+        function markdownToHtml(md) {
+            md = md.trim();
+
+            // Bold **text** -> <strong>text</strong>
+            md = md.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+            const lines = md.split('\n');
+            let html = '';
+            let inList = null; // 'ol' or 'ul'
+
+            for (const line of lines) {
+                const olMatch = line.match(/^\s*(\d+)\.\s+(.*)/);
+                const ulMatch = line.match(/^\s*[\*-]\s+(.*)/);
+
+                if (olMatch) { // Numbered list
+                    if (inList !== 'ol') {
+                        if (inList) html += `</${inList}>`; // Close previous list
+                        html += '<ol class="list-decimal list-inside my-2 pl-4 space-y-1">';
+                        inList = 'ol';
+                    }
+                    html += `<li>${olMatch[2]}</li>`;
+                } else if (ulMatch) { // Unordered list
+                    if (inList !== 'ul') {
+                        if (inList) html += `</${inList}>`; // Close previous list
+                        html += '<ul class="list-disc list-inside my-2 pl-4 space-y-1">';
+                        inList = 'ul';
+                    }
+                    html += `<li>${ulMatch[1]}</li>`;
+                } else { // Not a list item
+                    if (inList) {
+                        html += `</${inList}>`; // Close any open list
+                        inList = null;
+                    }
+                    if (line.trim() !== '') {
+                        html += `<p class="mb-4">${line}</p>`;
+                    }
+                }
+            }
+
+            if (inList) { // Close any remaining open list at the end
+                html += `</${inList}>`;
+            }
+
+            return html;
+        }
+
+        // --- Gemini API Integration ---
+        const solveButton = document.getElementById('solve-button');
+        const dilemmaInput = document.getElementById('dilemma-input');
+        const resultContainer = document.getElementById('gemini-result-container');
+        const loader = document.getElementById('loader');
+        const geminiOutput = document.getElementById('gemini-output');
+
+        solveButton.addEventListener('click', async () => {
+            const userDilemma = dilemmaInput.value.trim();
+            if (!userDilemma) {
+                alert('Prosím, popište své dilema.');
+                return;
+            }
+
+            resultContainer.classList.remove('hidden');
+            loader.classList.remove('hidden');
+            geminiOutput.classList.add('hidden');
+            geminiOutput.innerHTML = '';
+
+            const principles = Array.from(document.querySelectorAll('.card')).map(card => {
+                const title = card.querySelector('h2').innerText;
+                const description = card.querySelector('p').innerText;
+                return `${title}: ${description}`;
+            }).join('\n');
+
+            const prompt = `Jsi seniorní poradce ve společnosti SEBIT Solutions, která se řídí následujícím manifestem:
+--- MANIFEST ---
+${principles}
+--- KONEC MANIFESTU ---
+
+Mladší kolega za tebou přišel s následujícím dilematem a prosí tě o radu, jak situaci řešit v souladu s firemními hodnotami. Dilema zní:
+"${userDilemma}"
+
+Napiš mu srozumitelnou, empatickou a konstruktivní radu. Navrhni konkrétní kroky, které by měl podniknout. Odkazuj se na konkrétní body manifestu, abys podpořil/a své doporučení. Odpověď formuluj jako přímou radu kolegovi. Struktura odpovědi by měla být:
+1.  Oslovení a pochopení situace.
+2.  Hlavní rada a doporučený postup (použij číslovaný seznam pro kroky).
+3.  Odkazy na konkrétní body manifestu (použij tučné písmo pro názvy bodů).
+4.  Závěrečné povzbuzení.`;
+            
+            try {
+                let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+                const payload = { contents: chatHistory };
+                const apiKey = ""; 
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API call failed with status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                
+                let text = 'Omlouváme se, ale nepodařilo se získat odpověď. Zkuste to prosím znovu.';
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    text = result.candidates[0].content.parts[0].text;
+                }
+                
+                geminiOutput.innerHTML = markdownToHtml(text);
+
+            } catch (error) {
+                console.error('Error calling Gemini API:', error);
+                geminiOutput.innerHTML = '<p>Došlo k chybě při komunikaci s AI. Zkontrolujte prosím konzoli pro více detailů a zkuste to později.</p>';
+            } finally {
+                loader.classList.add('hidden');
+                geminiOutput.classList.remove('hidden');
+            }
+        });
+    </script>
+
+</body>
+</html>
