@@ -178,6 +178,16 @@
                         <span id="file-text-icon" class="mr-2"></span>
                         Uložit jako PDF
                     </button>
+                    <!-- Přidejte do sekce Exportovat -->
+                    <button id="btn-export-json" class="w-full bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center">
+                        <span class="mr-2">⬇️</span>
+                        Uložit jako JSON
+                    </button>
+                    <button id="btn-import-json" class="w-full bg-purple-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-purple-600 transition-colors flex items-center justify-center">
+                        <span class="mr-2">⬆️</span>
+                        Načíst z JSON
+                    </button>
+                    <input type="file" id="import-json-input" accept=".json" class="hidden" />
                 </div>
             </div>
             
@@ -744,6 +754,49 @@
 
             btnExportPng.addEventListener('click', () => exportCanvas('png'));
             btnExportPdf.addEventListener('click', () => exportCanvas('pdf'));
+
+            // ...existing code...
+
+            // --- EXPORT/IMPORT JSON ---
+            const btnExportJson = document.getElementById('btn-export-json');
+            const btnImportJson = document.getElementById('btn-import-json');
+            const importJsonInput = document.getElementById('import-json-input');
+
+            btnExportJson.addEventListener('click', () => {
+                if (!state) return;
+                const dataStr = JSON.stringify(state, null, 2);
+                const blob = new Blob([dataStr], { type: "application/json" });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'timeline.json';
+                a.click();
+                URL.revokeObjectURL(url);
+            });
+
+            btnImportJson.addEventListener('click', () => {
+                importJsonInput.click();
+            });
+
+            importJsonInput.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const importedState = JSON.parse(e.target.result);
+                        // Volitelně validujte strukturu importedState
+                        state = importedState;
+                        saveStateToFirestore();
+                        render();
+                        alert('Timeline byla úspěšně importována.');
+                    } catch (err) {
+                        alert('Chyba při načítání JSON souboru.');
+                    }
+                };
+                reader.readAsText(file);
+            });
+            // ...existing code...
 
             // --- AI FUNKCE (GEMINI) ---
             const showLoading = (isLoading, text = 'Načítám...') => {
