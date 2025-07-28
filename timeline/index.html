@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responzivní Generátor Roadmapy s AI</title>
+    <title>Responzivní Generátor Roadmapy s AI a Firebase</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -204,10 +204,10 @@
                     <!-- Obsah roadmapy se generuje dynamicky -->
                 </div>
                 <!-- Loading Overlay -->
-                <div id="loading-overlay" class="absolute inset-0 bg-slate-100 bg-opacity-80 hidden items-center justify-center no-export z-40">
+                <div id="loading-overlay" class="absolute inset-0 bg-slate-100 bg-opacity-80 flex items-center justify-center no-export z-40">
                     <div class="text-center">
                         <div class="spinner border-4 rounded-full mx-auto"></div>
-                        <p id="loading-text" class="text-lg font-semibold text-slate-700 mt-4">Načítám...</p>
+                        <p id="loading-text" class="text-lg font-semibold text-slate-700 mt-4">Připojuji k databázi...</p>
                     </div>
                 </div>
             </div>
@@ -255,7 +255,12 @@
         </div>
     </template>
 
-    <script>
+    <script type="module">
+        // Import Firebase SDK
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, onSnapshot, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
         document.addEventListener('DOMContentLoaded', () => {
 
             // --- IKONY ---
@@ -273,6 +278,11 @@
 
             // --- STAV APLIKACE ---
             let state;
+            let db;
+            let auth;
+            let userId;
+            let unsubscribeFromFirestore; // Pro odhlášení listeneru
+
             const defaultState = {
                 layout: 'horizontal',
                 filters: { status: 'all', priority: 'all' },
@@ -286,10 +296,8 @@
                     { id: 1, title: 'Analýza konkurence', description: 'Zmapování hlavních konkurentů na trhu.', phaseId: 1, color: '#3b82f6', priority: 'high', status: 'done' },
                     { id: 2, title: 'Uživatelské průzkumy', description: 'Dotazníky a rozhovory s cílovou skupinou.', phaseId: 1, color: '#3b82f6', priority: 'high', status: 'inprogress' },
                     { id: 3, title: 'Wireframy a Mockupy', description: 'Vytvoření základní struktury a vizuálního návrhu.', phaseId: 2, color: '#a855f7', priority: 'medium', status: 'todo' },
-                    { id: 4, title: 'Klikací prototyp', description: 'Interaktivní prototyp pro uživatelské testování.', phaseId: 2, color: '#a855f7', priority: 'medium', status: 'todo' },
-                    { id: 5, title: 'Vývoj backendu', description: 'API a databázová architektura.', phaseId: 3, color: '#10b981', priority: 'high', status: 'todo' },
                 ],
-                nextItemId: 6,
+                nextItemId: 4,
                 nextPhaseId: 5
             };
 
@@ -319,12 +327,68 @@
             const loadingText = document.getElementById('loading-text');
             let editingContext = null;
 
-            // --- SPRÁVA STAVU (localStorage) ---
-            const saveState = () => localStorage.setItem('roadmapState', JSON.stringify(state));
-            const loadState = () => {
-                const savedState = localStorage.getItem('roadmapState');
-                state = savedState ? JSON.parse(savedState) : JSON.parse(JSON.stringify(defaultState));
-            };
+            // --- FIREBASE INTEGRACE ---
+            async function initializeFirebase() {
+                // Tyto proměnné jsou poskytovány prostředím Canvas
+                const firebaseConfig = JSON.parse(__firebase_config);
+                const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
+                const app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+
+                onAuthStateChanged(auth, async (user) => {
+                    if (user) {
+                        userId = user.uid;
+                        setupFirestoreListener(appId, userId);
+                    } else {
+                        try {
+                            if (typeof __initial_auth_token !== 'undefined') {
+                                await signInWithCustomToken(auth, __initial_auth_token);
+                            } else {
+                                await signInAnonymously(auth);
+                            }
+                        } catch (error) {
+                            console.error("Firebase sign-in failed:", error);
+                            showLoading(true, "Chyba přihlášení k databázi.");
+                        }
+                    }
+                });
+            }
+
+            function setupFirestoreListener(appId, uid) {
+                const docRef = doc(db, "artifacts", appId, "users", uid);
+                
+                if (unsubscribeFromFirestore) {
+                    unsubscribeFromFirestore(); // Odhlásit starý listener, pokud existuje
+                }
+
+                unsubscribeFromFirestore = onSnapshot(docRef, (docSnap) => {
+                    if (docSnap.exists()) {
+                        state = docSnap.data();
+                    } else {
+                        // Dokument neexistuje, vytvoříme nový s výchozími daty
+                        state = JSON.parse(JSON.stringify(defaultState));
+                        saveStateToFirestore(); 
+                    }
+                    showLoading(false);
+                    render();
+                }, (error) => {
+                    console.error("Chyba při naslouchání databázi:", error);
+                    showLoading(true, "Chyba spojení s databází.");
+                });
+            }
+            
+            async function saveStateToFirestore() {
+                if (!userId) return;
+                try {
+                    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+                    await setDoc(doc(db, "artifacts", appId, "users", userId), state);
+                } catch (error) {
+                    console.error("Chyba při ukládání do Firestore:", error);
+                    alert("Nepodařilo se uložit změny.");
+                }
+            }
             
             // --- POMOCNÉ FUNKCE PRO VZHLED ---
             const priorityMap = {
@@ -340,6 +404,11 @@
 
             // --- FUNKCE PRO VYKRESLOVÁNÍ ---
             const render = () => {
+                if (!state) { // Pokud ještě nejsou načtena data, nic nevykresluj
+                    showLoading(true, "Načítám data...");
+                    return;
+                }
+                showLoading(false);
                 updatePhaseSelect();
                 updateLayoutButtons();
                 roadmapContainer.innerHTML = '';
@@ -355,11 +424,12 @@
                     phaseManagementDiv.style.display = 'none';
                     document.getElementById('filters').style.display = 'none';
                 }
-                saveState();
             };
 
             const updatePhaseSelect = () => {
-                document.getElementById('item-phase').innerHTML = state.phases.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
+                if (state && state.phases) {
+                    document.getElementById('item-phase').innerHTML = state.phases.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
+                }
             };
             
             const updateLayoutButtons = () => {
@@ -406,7 +476,7 @@
                         const item = state.items.find(i => i.id === parseInt(evt.item.dataset.id));
                         if (item) {
                             item.phaseId = parseInt(evt.to.closest('.phase-column').dataset.id);
-                            saveState();
+                            saveStateToFirestore();
                         }
                     }});
                 });
@@ -501,9 +571,9 @@
                     status: document.getElementById('item-status').value,
                 };
                 state.items.push(newItem);
+                saveStateToFirestore();
                 addItemForm.reset();
                 document.getElementById('item-color').value = '#3b82f6';
-                render();
             });
 
             btnAddPhase.addEventListener('click', () => {
@@ -511,7 +581,7 @@
                 if (name) {
                     state.phases.push({ id: state.nextPhaseId++, name: name });
                     document.getElementById('phase-name').value = '';
-                    render();
+                    saveStateToFirestore();
                 }
             });
             
@@ -535,7 +605,7 @@
             const switchLayout = (newLayout) => {
                 if (state.layout !== newLayout) {
                     state.layout = newLayout;
-                    render();
+                    saveStateToFirestore();
                 }
             };
             
@@ -592,21 +662,23 @@
                 const { type, id } = editingContext;
                 
                 if (type === 'item') {
-                    const item = state.items.find(i => i.id === id);
-                    if (item) {
-                        item.title = document.getElementById('edit-item-title').value;
-                        item.description = document.getElementById('edit-item-desc').value;
-                        item.phaseId = parseInt(document.getElementById('edit-item-phase').value);
-                        item.priority = document.getElementById('edit-item-priority').value;
-                        item.status = document.getElementById('edit-item-status').value;
-                        item.color = document.getElementById('edit-item-color').value;
+                    const itemIndex = state.items.findIndex(i => i.id === id);
+                    if (itemIndex > -1) {
+                        state.items[itemIndex].title = document.getElementById('edit-item-title').value;
+                        state.items[itemIndex].description = document.getElementById('edit-item-desc').value;
+                        state.items[itemIndex].phaseId = parseInt(document.getElementById('edit-item-phase').value);
+                        state.items[itemIndex].priority = document.getElementById('edit-item-priority').value;
+                        state.items[itemIndex].status = document.getElementById('edit-item-status').value;
+                        state.items[itemIndex].color = document.getElementById('edit-item-color').value;
                     }
                 } else if (type === 'phase') {
-                    const phase = state.phases.find(p => p.id === id);
-                    if (phase) phase.name = document.getElementById('edit-phase-name').value;
+                    const phaseIndex = state.phases.findIndex(p => p.id === id);
+                    if (phaseIndex > -1) {
+                        state.phases[phaseIndex].name = document.getElementById('edit-phase-name').value;
+                    }
                 }
                 closeEditModal();
-                render();
+                saveStateToFirestore();
             });
 
             modalBtnDelete.addEventListener('click', () => {
@@ -626,7 +698,7 @@
                     state.phases = state.phases.filter(p => p.id !== id);
                 }
                 closeEditModal();
-                render();
+                saveStateToFirestore();
             });
 
             // --- EXPORT LOGIKA ---
@@ -677,7 +749,7 @@
             };
 
             async function callGemini(prompt) {
-                const apiKey = "AIzaSyD8KytMlknhaCilHjfBk7dR8F13swM8Rv8"; // API klíč je spravován v prostředí Canvas
+                const apiKey = ""; // API klíč je spravován v prostředí Canvas
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
                 
                 const payload = {
@@ -725,7 +797,7 @@
                 if (resultText) {
                     const tasks = resultText.split('\n').filter(t => t.trim() !== '');
                     tasks.forEach(taskTitle => {
-                        const newItem = {
+                        state.items.push({
                             id: state.nextItemId++,
                             title: taskTitle.trim(),
                             description: '',
@@ -733,10 +805,9 @@
                             color: '#8b5cf6', // Default AI color
                             priority: 'medium',
                             status: 'todo',
-                        };
-                        state.items.push(newItem);
+                        });
                     });
-                    render();
+                    saveStateToFirestore();
                 }
 
                 button.innerHTML = originalButtonContent;
@@ -796,8 +867,7 @@
             }
 
             // --- INICIALIZACE ---
-            loadState();
-            render();
+            initializeFirebase();
             window.addEventListener('resize', render);
         });
     </script>
