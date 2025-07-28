@@ -258,8 +258,8 @@
     <script type="module">
         // Import Firebase SDK
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, onSnapshot, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, onSnapshot, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         document.addEventListener('DOMContentLoaded', () => {
 
@@ -329,9 +329,14 @@
 
             // --- FIREBASE INTEGRACE ---
             async function initializeFirebase() {
-                // Tyto proměnné jsou poskytovány prostředím Canvas
-                const firebaseConfig = JSON.parse(__firebase_config);
-                const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+                const firebaseConfig = {
+                    apiKey: "AIzaSyC-FmJAtv9aNld-iHjtiwi2FVHjeDccT6w",
+                    authDomain: "sebit-web-timeline.firebaseapp.com",
+                    projectId: "sebit-web-timeline",
+                    storageBucket: "sebit-web-timeline.appspot.com",
+                    messagingSenderId: "972665408352",
+                    appId: "1:972665408352:web:fc2eeb23ada54e2f76ec05"
+                };
 
                 const app = initializeApp(firebaseConfig);
                 db = getFirestore(app);
@@ -340,34 +345,31 @@
                 onAuthStateChanged(auth, async (user) => {
                     if (user) {
                         userId = user.uid;
-                        setupFirestoreListener(appId, userId);
+                        setupFirestoreListener(userId);
                     } else {
                         try {
-                            if (typeof __initial_auth_token !== 'undefined') {
-                                await signInWithCustomToken(auth, __initial_auth_token);
-                            } else {
-                                await signInAnonymously(auth);
-                            }
+                            await signInAnonymously(auth);
                         } catch (error) {
                             console.error("Firebase sign-in failed:", error);
-                            showLoading(true, "Chyba přihlášení k databázi.");
+                            showLoading(true, "Chyba přihlášení. Povolte Anonymní přihlašování ve Firebase.");
                         }
                     }
                 });
             }
 
-            function setupFirestoreListener(appId, uid) {
-                const docRef = doc(db, "artifacts", appId, "users", uid);
+            function setupFirestoreListener(uid) {
+                const docRef = doc(db, "roadmaps", uid);
                 
                 if (unsubscribeFromFirestore) {
-                    unsubscribeFromFirestore(); // Odhlásit starý listener, pokud existuje
+                    unsubscribeFromFirestore(); 
                 }
 
                 unsubscribeFromFirestore = onSnapshot(docRef, (docSnap) => {
                     if (docSnap.exists()) {
                         state = docSnap.data();
+                        if (!state.items) state.items = [];
+                        if (!state.phases) state.phases = [];
                     } else {
-                        // Dokument neexistuje, vytvoříme nový s výchozími daty
                         state = JSON.parse(JSON.stringify(defaultState));
                         saveStateToFirestore(); 
                     }
@@ -380,10 +382,9 @@
             }
             
             async function saveStateToFirestore() {
-                if (!userId) return;
+                if (!userId || !state) return;
                 try {
-                    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-                    await setDoc(doc(db, "artifacts", appId, "users", userId), state);
+                    await setDoc(doc(db, "roadmaps", userId), state);
                 } catch (error) {
                     console.error("Chyba při ukládání do Firestore:", error);
                     alert("Nepodařilo se uložit změny.");
@@ -404,7 +405,7 @@
 
             // --- FUNKCE PRO VYKRESLOVÁNÍ ---
             const render = () => {
-                if (!state) { // Pokud ještě nejsou načtena data, nic nevykresluj
+                if (!state) { 
                     showLoading(true, "Načítám data...");
                     return;
                 }
@@ -446,10 +447,13 @@
                 btnVertical.classList.toggle('text-slate-600', isHorizontal);
             };
 
-            const getFilteredItems = () => state.items.filter(item => 
-                (state.filters.status === 'all' || item.status === state.filters.status) &&
-                (state.filters.priority === 'all' || item.priority === state.filters.priority)
-            );
+            const getFilteredItems = () => {
+                if (!state || !state.items) return [];
+                return state.items.filter(item => 
+                    (state.filters.status === 'all' || item.status === state.filters.status) &&
+                    (state.filters.priority === 'all' || item.priority === state.filters.priority)
+                );
+            }
 
             const renderHorizontalRoadmap = () => {
                 roadmapContainer.className = 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6';
@@ -486,7 +490,7 @@
                 roadmapContainer.className = 'relative flex flex-col items-center pt-8';
                 const items = state.items;
 
-                if (items.length === 0) {
+                if (!items || items.length === 0) {
                     roadmapContainer.innerHTML = `<div class="text-center p-10 bg-white rounded-lg shadow-sm"><h3 class="text-lg font-semibold text-slate-500">Žádné úkoly k zobrazení.</h3></div>`;
                     return;
                 }
