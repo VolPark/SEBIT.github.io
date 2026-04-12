@@ -55,33 +55,6 @@
             color: #1f2937;
             flex-grow: 1;
         }
-        .gemini-feature {
-            border: 1px solid #002B5C;
-        }
-        .gemini-button {
-            background-color: #002B5C;
-            color: #FFFFFF;
-            transition: background-color 0.3s ease;
-        }
-        .gemini-button:hover {
-            background-color: #001f44;
-        }
-        .gemini-button .sparkle {
-            color: #C6FF00;
-        }
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #002B5C;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
         /* --- Styly pro tisk --- */
         @media print {
             @page {
@@ -180,154 +153,18 @@
             </div>
         </div>
         
-        <!-- Gemini API Feature Section -->
-        <section id="gemini-feature" class="mt-20 p-8 rounded-2xl gemini-feature no-print">
-            <h2 class="text-3xl font-bold text-center sebit-navy mb-2">Řešitel dilemat <span class="sebit-lime">✨</span></h2>
-            <p class="text-center text-gray-600 mb-8">Nevíte si rady se složitou pracovní situací? Popište ji a získejte radu v souladu s našimi hodnotami.</p>
-            
-            <div class="max-w-2xl mx-auto">
-                <textarea id="dilemma-input" rows="4" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sebit-navy focus:border-sebit-navy transition" placeholder="Např. Klient trvá na řešení, o kterém vím, že není technicky správné a v budoucnu způsobí problémy. Jak mu to mám vysvětlit?"></textarea>
-                <button id="solve-button" class="gemini-button w-full mt-4 py-3 px-6 rounded-lg font-semibold text-lg flex items-center justify-center">
-                    <span class="mr-2">Navrhnout řešení</span> <span class="sparkle">✨</span>
-                </button>
-            </div>
-
-            <div id="gemini-result-container" class="mt-8 max-w-3xl mx-auto hidden">
-                <div id="loader" class="loader mx-auto"></div>
-                <div id="gemini-output" class="p-6 bg-gray-50 rounded-lg border border-gray-200 text-gray-800"></div>
-            </div>
-        </section>
-
         <!-- Footer -->
-        <footer class="text-center mt-16 text-gray-500">
-            <p>&copy; 2025 SEBIT Solutions s.r.o. Všechna práva vyhrazena.</p>
+        <footer class="text-center mt-16 pt-8 border-t border-gray-200 text-gray-500">
+            <p>&copy; <span id="current-year"></span> SEBIT Solutions s.r.o. Všechna práva vyhrazena. | <a href="/privacy" class="hover:underline">Zásady ochrany osobních údajů</a></p>
         </footer>
 
     </div>
 
     <script>
-        // --- Helper function to convert Markdown to HTML ---
-        function markdownToHtml(md) {
-            md = md.trim();
-
-            // Bold **text** -> <strong>text</strong>
-            md = md.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-
-            const lines = md.split('\n');
-            let html = '';
-            let inList = null; // 'ol' or 'ul'
-
-            for (const line of lines) {
-                const olMatch = line.match(/^\s*(\d+)\.\s+(.*)/);
-                const ulMatch = line.match(/^\s*[\*-]\s+(.*)/);
-
-                if (olMatch) { // Numbered list
-                    if (inList !== 'ol') {
-                        if (inList) html += `</${inList}>`; // Close previous list
-                        html += '<ol class="list-decimal list-inside my-2 pl-4 space-y-1">';
-                        inList = 'ol';
-                    }
-                    html += `<li>${olMatch[2]}</li>`;
-                } else if (ulMatch) { // Unordered list
-                    if (inList !== 'ul') {
-                        if (inList) html += `</${inList}>`; // Close previous list
-                        html += '<ul class="list-disc list-inside my-2 pl-4 space-y-1">';
-                        inList = 'ul';
-                    }
-                    html += `<li>${ulMatch[1]}</li>`;
-                } else { // Not a list item
-                    if (inList) {
-                        html += `</${inList}>`; // Close any open list
-                        inList = null;
-                    }
-                    if (line.trim() !== '') {
-                        html += `<p class="mb-4">${line}</p>`;
-                    }
-                }
-            }
-
-            if (inList) { // Close any remaining open list at the end
-                html += `</${inList}>`;
-            }
-
-            return html;
-        }
-
-        // --- Gemini API Integration ---
-        const solveButton = document.getElementById('solve-button');
-        const dilemmaInput = document.getElementById('dilemma-input');
-        const resultContainer = document.getElementById('gemini-result-container');
-        const loader = document.getElementById('loader');
-        const geminiOutput = document.getElementById('gemini-output');
-
-        solveButton.addEventListener('click', async () => {
-            const userDilemma = dilemmaInput.value.trim();
-            if (!userDilemma) {
-                alert('Prosím, popište své dilema.');
-                return;
-            }
-
-            resultContainer.classList.remove('hidden');
-            loader.classList.remove('hidden');
-            geminiOutput.classList.add('hidden');
-            geminiOutput.innerHTML = '';
-
-            const principles = Array.from(document.querySelectorAll('.card')).map(card => {
-                const title = card.querySelector('h2').innerText;
-                const description = card.querySelector('p').innerText;
-                return `${title}: ${description}`;
-            }).join('\n');
-
-            const prompt = `Jsi seniorní poradce ve společnosti SEBIT Solutions, která se řídí následujícím manifestem:
---- MANIFEST ---
-${principles}
---- KONEC MANIFESTU ---
-
-Mladší kolega za tebou přišel s následujícím dilematem a prosí tě o radu, jak situaci řešit v souladu s firemními hodnotami. Dilema zní:
-"${userDilemma}"
-
-Napiš mu srozumitelnou, empatickou a konstruktivní radu. Navrhni konkrétní kroky, které by měl podniknout. Odkazuj se na konkrétní body manifestu, abys podpořil/a své doporučení. Odpověď formuluj jako přímou radu kolegovi. Struktura odpovědi by měla být:
-1.  Oslovení a pochopení situace.
-2.  Hlavní rada a doporučený postup (použij číslovaný seznam pro kroky).
-3.  Odkazy na konkrétní body manifestu (použij tučné písmo pro názvy bodů).
-4.  Závěrečné povzbuzení.`;
-            
-            try {
-                let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
-                const payload = { contents: chatHistory };
-                const apiKey = "AIzaSyD8KytMlknhaCilHjfBk7dR8F13swM8Rv8"; 
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-                
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    throw new Error(`API call failed with status: ${response.status}`);
-                }
-
-                const result = await response.json();
-                
-                let text = 'Omlouváme se, ale nepodařilo se získat odpověď. Zkuste to prosím znovu.';
-                if (result.candidates && result.candidates.length > 0 &&
-                    result.candidates[0].content && result.candidates[0].content.parts &&
-                    result.candidates[0].content.parts.length > 0) {
-                    text = result.candidates[0].content.parts[0].text;
-                }
-                
-                geminiOutput.innerHTML = markdownToHtml(text);
-
-            } catch (error) {
-                console.error('Error calling Gemini API:', error);
-                geminiOutput.innerHTML = '<p>Došlo k chybě při komunikaci s AI. Zkontrolujte prosím konzoli pro více detailů a zkuste to později.</p>';
-            } finally {
-                loader.classList.add('hidden');
-                geminiOutput.classList.remove('hidden');
-            }
-        });
+        document.getElementById("current-year").textContent = new Date().getFullYear();
     </script>
 
+  <!-- GDPR Cookie Consent -->
+  <script src="/cookie-consent.js"></script>
 </body>
 </html>
