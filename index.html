@@ -64,7 +64,7 @@
   <link rel="dns-prefetch" href="https://unpkg.com">
 
   <!-- Google Fonts – Inter (brand typography) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -86,7 +86,7 @@
   <!-- AOS CSS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/fd3cf42a2f.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
   <!-- EmailJS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>
@@ -113,11 +113,11 @@
       <!-- Desktopové menu -->
       <nav class="hidden md:block">
         <ul class="flex space-x-6">
-          <li><a href="#hero" class="hover:text-sebit-lime">Domů</a></li>
-          <li><a href="https://sebit.cz/manifest" class="block hover:text-sebit-lime">Manifest</a></li>
-          <li><a href="#Consulting" class="hover:text-sebit-lime">Consulting</a></li>
-          <li><a href="#Software-development" class="hover:text-sebit-lime">Software development</a></li>
-          <li><a href="#kontakt" class="hover:text-sebit-lime">Kontakt</a></li>
+          <li><a href="#hero" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Domů</a></li>
+          <li><a href="https://sebit.cz/manifest" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Manifest</a></li>
+          <li><a href="#Consulting" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Consulting</a></li>
+          <li><a href="#Software-development" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Software development</a></li>
+          <li><a href="#kontakt" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Kontakt</a></li>
         </ul>
       </nav>
     </div>
@@ -131,11 +131,11 @@
     <ul 
       class="bg-gradient-to-b from-white via-white to-white shadow-lg rounded-b-md px-4 py-4 space-y-4"
     >
-      <li><a href="#hero" class="block hover:text-sebit-lime">Domů</a></li>
-      <li><a href="https://sebit.cz/manifest" class="block hover:text-sebit-lime">Manifest</a></li>
-      <li><a href="#Consulting" class="block hover:text-sebit-lime">Consulting</a></li>
-      <li><a href="#Software-development" class="block hover:text-sebit-lime">Software development</a></li>
-      <li><a href="#kontakt" class="block hover:text-sebit-lime">Kontakt</a></li>
+      <li><a href="#hero" class="block text-gray-800 font-medium hover:text-sebit-navy transition">Domů</a></li>
+      <li><a href="https://sebit.cz/manifest" class="block text-gray-800 font-medium hover:text-sebit-navy transition">Manifest</a></li>
+      <li><a href="#Consulting" class="block text-gray-800 font-medium hover:text-sebit-navy transition">Consulting</a></li>
+      <li><a href="#Software-development" class="block text-gray-800 font-medium hover:text-sebit-navy transition">Software development</a></li>
+      <li><a href="#kontakt" class="block text-gray-800 font-medium hover:text-sebit-navy transition">Kontakt</a></li>
     </ul>
   </nav>
 
@@ -288,18 +288,21 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
         <!-- Statistika 1 -->
-        <div class="text-center" data-aos="fade-up" data-aos-delay="100">
-          <div class="text-5xl font-extrabold text-sebit-lime mb-2">50+</div>
+        <div class="text-center flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-7 h-0.5 bg-sebit-lime rounded mb-3"></div>
+          <div class="text-5xl font-extrabold text-white mb-2 tracking-tight">50+</div>
           <p class="text-gray-300">Úspěšně obsazených pozic</p>
         </div>
         <!-- Statistika 2 -->
-        <div class="text-center" data-aos="fade-up" data-aos-delay="200">
-          <div class="text-5xl font-extrabold text-sebit-lime mb-2">5+</div>
+        <div class="text-center flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-7 h-0.5 bg-sebit-lime rounded mb-3"></div>
+          <div class="text-5xl font-extrabold text-white mb-2 tracking-tight">5+</div>
           <p class="text-gray-300">Let zkušeností na trhu</p>
         </div>
         <!-- Statistika 3 -->
-        <div class="text-center" data-aos="fade-up" data-aos-delay="300">
-          <div class="text-5xl font-extrabold text-sebit-lime mb-2">98%</div>
+        <div class="text-center flex flex-col items-center" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-7 h-0.5 bg-sebit-lime rounded mb-3"></div>
+          <div class="text-5xl font-extrabold text-white mb-2 tracking-tight">98%</div>
           <p class="text-gray-300">Spokojenost klientů</p>
         </div>
       </div>
@@ -550,7 +553,7 @@ document.addEventListener("DOMContentLoaded", () => {
         var desktopNav = document.querySelector('nav ul.flex');
         if (desktopNav) {
           var li = document.createElement('li');
-          li.innerHTML = '<a href="#reference" class="hover:text-sebit-lime">Reference</a>';
+          li.innerHTML = '<a href="#reference" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Reference</a>';
           var kontaktLi = Array.from(desktopNav.querySelectorAll('a')).find(a => a.href.includes('#kontakt'));
           if (kontaktLi) desktopNav.insertBefore(li, kontaktLi.parentElement);
         }
