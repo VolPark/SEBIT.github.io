@@ -503,7 +503,68 @@
 }
 
 /* =========================================================================
-   12. REDUCED MOTION
+   12. MODAL (Dialog)
+   ========================================================================= */
+
+.sebit-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: rgba(0, 43, 92, 0.7); /* navy translucent */
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur-base, 240ms) var(--ease-standard, ease),
+              visibility var(--dur-base, 240ms) var(--ease-standard, ease);
+}
+
+.sebit-modal-overlay--active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sebit-modal {
+  background: var(--sebit-white);
+  border-radius: var(--radius-lg);
+  max-width: 50rem;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: var(--space-8);
+  box-shadow: var(--shadow-2xl);
+  transform: translateY(20px) scale(0.95);
+  transition: transform var(--dur-slow, 400ms) var(--ease-signature, ease);
+  position: relative;
+}
+
+.sebit-modal-overlay--active .sebit-modal {
+  transform: translateY(0) scale(1);
+}
+
+.sebit-modal__close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--fg-muted);
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color var(--dur-instant, 80ms) var(--ease-standard, ease);
+}
+
+.sebit-modal__close:hover {
+  color: var(--sebit-navy);
+}
+
+/* =========================================================================
+   13. REDUCED MOTION
    Per DS motion rules: all transitions → instant, transforms → none
    ========================================================================= */
 
@@ -513,7 +574,9 @@
   .sebit-nav-link,
   .sebit-input,
   .sebit-textarea,
-  .sebit-division-tile {
+  .sebit-division-tile,
+  .sebit-modal-overlay,
+  .sebit-modal {
     transition-duration: 0ms !important;
   }
 

@@ -59,8 +59,7 @@
   <!-- Preconnect pro rychlejší načítání externích zdrojů -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.tailwindcss.com">
-  <link rel="dns-prefetch" href="https://kit.fontawesome.com">
+    <link rel="dns-prefetch" href="https://kit.fontawesome.com">
   <link rel="dns-prefetch" href="https://unpkg.com">
 
   <!-- Google Fonts – Inter (brand typography) -->
@@ -74,23 +73,7 @@
   <link rel="stylesheet" href="/shared/loader.css">
   <script src="/shared/loader.js"></script>
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          'sebit-navy': '#002B5C',
-          'sebit-lime': '#C6FF00'
-        },
-        fontFamily: {
-          sans: ['Inter', 'sans-serif']
-        }
-      }
-    }
-  }
-  </script>
+  
   <!-- AOS CSS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <!-- Font Awesome -->
@@ -411,78 +394,7 @@
     });
   </script>
 
-  <!-- Inline JS pro "Zjistit více", toggle mobilního menu a skrytí menu při výběru -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  // "Zjistit více" tlačítka
-  document.querySelectorAll('.more-btn').forEach(function(button) {
-    button.addEventListener('click', function(e) {
-      e.preventDefault();
-      // Odstraníme všechny existující extra sekce
-      document.querySelectorAll('.more-info').forEach(el => el.remove());
-      // Získáme text z data-text atributu
-      const text = this.dataset.text;
-      if (!text) {
-        console.warn("Atribut data-text nebyl nalezen u tlačítka!");
-      }
-      
-      let parentElement;
-      // Kontrola šířky okna - pro mobilní zobrazení (<768px)
-      if(window.innerWidth < 768) {
-        // V mobilním zobrazení vložíme sekci hned za přímého rodiče tlačítka
-        parentElement = this.parentElement;
-      } else {
-        // Pro desktopové zobrazení ponecháme původní chování
-        parentElement = this.closest('.service-card') || this.closest('section');
-      }
-      
-      if (!parentElement) {
-        console.error("Nepodařilo se najít rodičovský element.");
-        return;
-      }
-      
-      // Vytvoříme novou sekci s textem
-      const extraSection = document.createElement('section');
-      extraSection.className = "py-20 bg-white more-info";
-      extraSection.style.display = "block";
-      extraSection.style.opacity = "1";
-      extraSection.innerHTML = `
-        <div class="container mx-auto px-4">
-          <div class="text-center mb-12">
-            <p>${text}</p>
-          </div>
-        </div>
-      `;
-      // Vložíme novou sekci za vybraný rodičovský element
-      parentElement.insertAdjacentElement('afterend', extraSection);
-      
-      // Pokud jsme v mobilním zobrazení, posuneme stránku na začátek nové sekce
-      if(window.innerWidth < 768) {
-        extraSection.scrollIntoView({ behavior: 'smooth' });
-      }
-      
-      // Obnovíme AOS, pokud je definován
-      if (typeof AOS !== 'undefined') {
-        AOS.refresh();
-      }
-    });
-  });
   
-  // Toggle mobilního menu
-  const menuButton = document.getElementById("mobile-menu-button");
-  const menu = document.getElementById("mobile-menu");
-  menuButton.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-  });
-  
-  // Skrytí mobilního menu při kliknutí na odkaz
-  document.querySelectorAll('#mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      menu.classList.add('hidden');
-    });
-  });
-});
-</script>
   <!-- SEBIT Shared Components -->
   <script src="/shared/components.js"></script>
 
