@@ -1,0 +1,10 @@
+{
+  "name": "sebit-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SEBIT Solutions s.r.o. — static website",
+  "scripts": {
+    "dev": "npx -y live-server --port=3000 --no-browser --quiet",
+    "preview": "npx -y live-server --port=3000"
+  }
+}
