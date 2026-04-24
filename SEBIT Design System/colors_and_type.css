@@ -93,21 +93,6 @@
   --ls-tight: -0.01em;
   --ls-wide: 0.04em;    /* logotype sub-word "SOLUTIONS" */
   --ls-wider: 0.08em;   /* uppercase eyebrow on manifest */
-
-  /* ---------- Motion ---------- */
-  /* Durations */
-  --dur-instant: 80ms;       /* Micro feedback — hover, focus ring */
-  --dur-fast:    160ms;      /* Default UI — buttons, toggles, dropdowns */
-  --dur-base:    240ms;      /* Standard transitions — panels, cards */
-  --dur-slow:    400ms;      /* Expressive — modals, page-level */
-  --dur-slowest: 640ms;      /* Choreographed — onboarding, hero */
-
-  /* Easings */
-  --ease-standard:  cubic-bezier(0.2, 0, 0, 1);     /* Enter + move */
-  --ease-emphasized: cubic-bezier(0.3, 0, 0, 1);    /* Hero enter */
-  --ease-exit:      cubic-bezier(0.4, 0, 1, 1);     /* Leave screen */
-  --ease-in-out:    cubic-bezier(0.4, 0, 0.2, 1);   /* Symmetric */
-  --ease-signature: cubic-bezier(0.7, 0, 0.3, 1);   /* SEBIT arrow snap */
 }
 
 /* =========================================================================
