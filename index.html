@@ -120,12 +120,12 @@
       </button>
       <!-- Desktopové menu -->
       <nav class="hidden md:block">
-        <ul class="flex space-x-6">
-          <li><a href="#hero" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Domů</a></li>
-          <li><a href="https://sebit.cz/manifest" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Manifest</a></li>
-          <li><a href="#Consulting" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Consulting</a></li>
-          <li><a href="#Software-development" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Software development</a></li>
-          <li><a href="#kontakt" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Kontakt</a></li>
+        <ul class="sebit-nav">
+          <li><a href="#hero" class="sebit-nav-link">Domů</a></li>
+          <li><a href="https://sebit.cz/manifest" class="sebit-nav-link">Manifest</a></li>
+          <li><a href="#Consulting" class="sebit-nav-link">Consulting</a></li>
+          <li><a href="#Software-development" class="sebit-nav-link">Software development</a></li>
+          <li><a href="#kontakt" class="sebit-nav-link">Kontakt</a></li>
         </ul>
       </nav>
     </div>
@@ -152,13 +152,13 @@
     <div class="container mx-auto max-w-5xl px-4 py-10 flex flex-col md:flex-row items-center text-center md:text-left">
       <!-- Textový obsah umístěný vlevo -->
       <div data-aos="fade-right" class="md:flex-1">
-        <h1 class="text-4xl md:text-6xl font-extrabold mb-4">
+        <h1 class="sebit-display text-white mb-4">
           SEBIT Solutions
         </h1>
-        <p class="text-lg md:text-2xl mb-8 max-w-2xl">
+        <p class="sebit-lead text-gray-300 mb-8 max-w-2xl">
           Jednoduché a profesionální řešení vašich kapacitních problémů s vývojem, včetně pronájmu celých týmů.
         </p>
-        <a href="#kontakt" class="bg-white text-sebit-navy px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100 transition">
+        <a href="#kontakt" class="sebit-btn sebit-btn--primary">
           Kontaktujte nás
         </a>
       </div>
@@ -172,26 +172,26 @@
 <!-- Divize sekce -->
   <section id="divisions" class="py-16 bg-sebit-navy">
   <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+    <div class="sebit-division-grid">
       <!-- Solutions -->
-      <a href="https://sebit.cz" class="block bg-white rounded-lg shadow hover:shadow-2xl transition p-4 h-30 text-center flex flex-col justify-center">
-        <img src="/sebit_solutions_light.svg" alt="SEBIT Solutions" class="mx-auto h-16 mb-2">
-        <p class="text-gray-600 text-sm">IT consulting a projekty na klíč.</p>
+      <a href="https://sebit.cz" class="sebit-division-tile border-b-2 border-sebit-lime">
+        <img src="/sebit_solutions_light.svg" alt="SEBIT Solutions" class="sebit-division-tile__logo">
+        <p class="sebit-division-tile__desc">IT consulting a projekty na klíč.</p>
       </a>
       <!-- Labs -->
-      <a href="https://sebit.cz/labs" class="block bg-white rounded-lg shadow hover:shadow-2xl transition p-4 h-30 text-center flex flex-col justify-center">
-        <img src="/sebit_labs_light.svg" alt="SEBIT Labs" class="mx-auto h-16 mb-2">
-        <p class="text-gray-600 text-sm">Inovační laboratoře a prototypy digitálních řešení.</p>
+      <a href="https://sebit.cz/labs" class="sebit-division-tile">
+        <img src="/sebit_labs_light.svg" alt="SEBIT Labs" class="sebit-division-tile__logo">
+        <p class="sebit-division-tile__desc">Inovační laboratoře a prototypy digitálních řešení.</p>
       </a>
       <!-- Medical -->
-      <a href="https://sebit.cz/Medical" class="block bg-white rounded-lg shadow hover:shadow-2xl transition p-4 h-30 text-center flex flex-col justify-center">
-        <img src="/sebit_medical_light.svg" alt="SEBIT Medical" class="mx-auto h-16 mb-2">
-        <p class="text-gray-600 text-sm">Zdraví na prvním místě.</p>
+      <a href="https://sebit.cz/Medical" class="sebit-division-tile">
+        <img src="/sebit_medical_light.svg" alt="SEBIT Medical" class="sebit-division-tile__logo">
+        <p class="sebit-division-tile__desc">Zdraví na prvním místě.</p>
       </a>
       <!-- Academy -->
-      <a href="https://sebit.cz/Academy" class="block bg-white rounded-lg shadow hover:shadow-2xl transition p-4 h-30 text-center flex flex-col justify-center">
-        <img src="/sebit_academy_light.svg" alt="SEBIT Academy" class="mx-auto h-16 mb-2">
-        <p class="text-gray-600 text-sm">Studentské stáže a kurzy IT dovedností.</p>
+      <a href="https://sebit.cz/Academy" class="sebit-division-tile">
+        <img src="/sebit_academy_light.svg" alt="SEBIT Academy" class="sebit-division-tile__logo">
+        <p class="sebit-division-tile__desc">Studentské stáže a kurzy IT dovedností.</p>
       </a>
     </div>
   </div>
@@ -201,44 +201,44 @@
   <section id="Consulting" class="py-20">
     <div class="container mx-auto px-4">
       <div class="text-center mb-12" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-4">Consulting</h2>
+        <h2 class="sebit-h2">Consulting</h2>
         <p class="text-gray-600">
           Nabízíme pronájem našich IT specialistů pro realizaci Vašeho projektu.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Bodyshopping (T&M) -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="100">
-          <h3 class="text-xl font-semibold mb-2">Bodyshopping (T&M)</h3>
-          <p class="text-gray-600 flex-grow">
+        <div class="sebit-card flex flex-col" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="sebit-card__title">Bodyshopping (T&M)</h3>
+          <p class="sebit-card__body flex-grow">
             Poskytujeme vysoce kvalifikované IT odborníky, kteří posílí váš tým a pomohou vám dosáhnout vašich cílů.
           </p>
           <a href="#" 
-             class="more-btn mt-4 block mx-auto bg-gray-200 text-black px-4 py-2 rounded hover:bg-sebit-navy hover:text-white transition"
+             class="sebit-btn sebit-btn--more mt-4 w-full more-btn"
              data-text="<h2 class='text-3xl font-bold mb-28'>Rozsah rolí v našem portfoliu</h2><div class='mt-8 grid grid-cols-1 md:grid-cols-4 gap-10 text-center'><div class='flex flex-col items-center space-y-2'><i class='fas fa-sitemap text-4xl'></i><h3 class='font-semibold'>Architektura</h3><p class='text-gray-700'>Solution Architect, Enterprise Architect</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-chart-bar text-4xl'></i><h3 class='font-semibold'>Analýza</h3><p class='text-gray-700'>IT Analytik, Business Analytik</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-vial text-4xl'></i><h3 class='font-semibold'>Testování</h3><p class='text-gray-700'>Tester, Test Analyst, Test Manager</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-code text-4xl'></i><h3 class='font-semibold'>Vývoj aplikací</h3><p class='text-gray-700'>Java Developer, .WSO2 Developer, React Developer</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-database text-4xl'></i><h3 class='font-semibold'>Databáze</h3><p class='text-gray-700'>Oracle Developer, ETL Developer</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-project-diagram text-4xl'></i><h3 class='font-semibold'>Řízení a koordinace</h3><p class='text-gray-700'>Project Manager, Scrum Master, Delivery Manager</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-exchange-alt text-4xl'></i><h3 class='font-semibold'>Integrace</h3><p class='text-gray-700'>Integrační Analytik, System Architekt, DevOps</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-cloud text-4xl'></i><h3 class='font-semibold'>Cloudová řešení</h3><p class='text-gray-700'>AWS Developer, Azure Developer, DevOps Engineer</p></div></div>">
             Zjistit více
           </a>
         </div>
         <!-- Team leasing -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="200">
-          <h3 class="text-xl font-semibold mb-2">Team leasing</h3>
-          <p class="text-gray-600 flex-grow">
+        <div class="sebit-card flex flex-col" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="sebit-card__title">Team leasing</h3>
+          <p class="sebit-card__body flex-grow">
             Sestavíme pro vás na míru vytvořený tým profesionálů, který můžete flexibilně řídit podle svých potřeb.
           </p>
           <a href="#" 
-             class="more-btn mt-4 block mx-auto bg-gray-200 text-black px-4 py-2 rounded hover:bg-sebit-navy hover:text-white transition"
+             class="sebit-btn sebit-btn--more mt-4 w-full more-btn"
              data-text="<h2 class='text-3xl font-bold mb-28'>Sestavit tým je možné z následujících rolí</h2><div class='mt-8 grid grid-cols-1 md:grid-cols-4 gap-10 text-center'><div class='flex flex-col items-center space-y-2'><i class='fas fa-sitemap text-4xl'></i><h3 class='font-semibold'>Architektura</h3><p class='text-gray-700'>Solution Architect, Enterprise Architect</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-chart-bar text-4xl'></i><h3 class='font-semibold'>Analýza</h3><p class='text-gray-700'>IT Analytik, Business Analytik</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-vial text-4xl'></i><h3 class='font-semibold'>Testování</h3><p class='text-gray-700'>Tester, Test Analyst, Test Manager</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-code text-4xl'></i><h3 class='font-semibold'>Vývoj aplikací</h3><p class='text-gray-700'>Java Developer, .WSO2 Developer, React Developer</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-database text-4xl'></i><h3 class='font-semibold'>Databáze</h3><p class='text-gray-700'>Oracle Developer, ETL Developer</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-project-diagram text-4xl'></i><h3 class='font-semibold'>Řízení a koordinace</h3><p class='text-gray-700'>Project Manager, Scrum Master, Delivery Manager</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-exchange-alt text-4xl'></i><h3 class='font-semibold'>Integrace</h3><p class='text-gray-700'>Integrační Analytik, System Architekt, DevOps</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-cloud text-4xl'></i><h3 class='font-semibold'>Cloudová řešení</h3><p class='text-gray-700'>AWS Developer, Azure Developer, DevOps Engineer</p></div></div>">
             Zjistit více
           </a>
         </div>
         <!-- Dodávka na klíč (FT&FP) -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="300">
-          <h3 class="text-xl font-semibold mb-2">Dodávka na klíč (FT&FP)</h3>
-          <p class="text-gray-600 flex-grow">
+        <div class="sebit-card flex flex-col" data-aos="fade-up" data-aos-delay="300">
+          <h3 class="sebit-card__title">Dodávka na klíč (FT&FP)</h3>
+          <p class="sebit-card__body flex-grow">
             Pokud upřednostňujete přesný časový plán, jasně definovaný rozsah projektu, smluvní záruky a kompletní řízení od začátku do konce, jsme tu pro Vás připraveni poskytnout špičkové služby.
           </p>
           <a href="#"
-             class="more-btn mt-4 block mx-auto bg-gray-200 text-black px-4 py-2 rounded hover:bg-sebit-navy hover:text-white transition"
+             class="sebit-btn sebit-btn--more mt-4 w-full more-btn"
              data-text="<h2 class='text-3xl font-bold mb-28'>V rámci dodávky celého projektu využíváme odborníky s následujícími rolemi</h2><div class='mt-8 grid grid-cols-1 md:grid-cols-4 gap-10 text-center'><div class='flex flex-col items-center space-y-2'><i class='fas fa-sitemap text-4xl'></i><h3 class='font-semibold'>Architektura</h3><p class='text-gray-700'>Solution Architect, Enterprise Architect</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-chart-bar text-4xl'></i><h3 class='font-semibold'>Analýza</h3><p class='text-gray-700'>IT Analytik, Business Analytik</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-vial text-4xl'></i><h3 class='font-semibold'>Testování</h3><p class='text-gray-700'>Tester, Test Analyst, Test Manager</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-code text-4xl'></i><h3 class='font-semibold'>Vývoj aplikací</h3><p class='text-gray-700'>Java Developer, .WSO2 Developer, React Developer</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-database text-4xl'></i><h3 class='font-semibold'>Databáze</h3><p class='text-gray-700'>Oracle Developer, ETL Developer</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-project-diagram text-4xl'></i><h3 class='font-semibold'>Řízení a koordinace</h3><p class='text-gray-700'>Project Manager, Scrum Master, Delivery Manager</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-exchange-alt text-4xl'></i><h3 class='font-semibold'>Integrace</h3><p class='text-gray-700'>Integrační Analytik, System Architekt, DevOps</p></div><div class='flex flex-col items-center space-y-2'><i class='fas fa-cloud text-4xl'></i><h3 class='font-semibold'>Cloudová řešení</h3><p class='text-gray-700'>AWS Developer, Azure Developer, DevOps Engineer</p></div></div>">
             Zjistit více
           </a>
@@ -251,32 +251,32 @@
   <section id="Software-development" class="py-20 bg-gray-100">
     <div class="container mx-auto px-4">
       <div class="text-center mb-12" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-4">Software development</h2>
+        <h2 class="sebit-h2">Software development</h2>
         <p class="text-gray-600">
           Jsme tým odborníků, kteří se zaměřují na vývoj moderních webových řešení a digitálních strategií.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Správa základních registrů -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="100">
-          <h3 class="text-xl font-semibold mb-2">Správa základních registrů</h3>
-          <p class="text-gray-600 flex-grow">
+        <div class="sebit-card flex flex-col" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="sebit-card__title">Správa základních registrů</h3>
+          <p class="sebit-card__body flex-grow">
             Připravíme pro Vaši společnost kompletní implementaci na základní registry státu (SZR), včetně iniciálního ztotožnění klientského portfolia a průběžných aktualizací těchto údajů.
           </p>
           <a href="#"
-             class="more-btn mt-4 block mx-auto bg-gray-200 text-black px-4 py-2 rounded hover:bg-sebit-navy hover:text-white transition"
+             class="sebit-btn sebit-btn--more mt-4 w-full more-btn"
              data-text="<h2 class='text-3xl font-bold mb-8 text-center'>Základní registry státu</h2><div class='mt-8 space-y-6 text-left'><p><i class='fas fa-university text-blue-600 mr-2'></i><strong>Co to je?</strong> Základní registry státu (ROB, ROS, RPP, RÚIAN) jsou centrální evidence občanů, osob, práv a povinností a územní identifikace. Slouží k zajištění jednotných a ověřených údajů napříč veřejnou správou.</p><p><i class='fas fa-cogs text-blue-600 mr-2'></i><strong>Jak fungují?</strong> Údaje z registrů jsou sdíleny mezi úřady, takže občan nemusí dokládat stále stejné informace. Aktualizace probíhá automaticky a zaručuje se tak jejich přesnost.</p><p><i class='fas fa-users-cog text-blue-600 mr-2'></i><strong>Kdo je může integrovat?</strong> Jen oprávněné subjekty, které splňují zákonné podmínky a mají povolení od správců registrů. Pro soukromý sektor je integrace možná pouze ve specifických případech dle zákona.</p></div>">
             Zjistit více
           </a>
         </div>
         <!-- Nahrazení technologie Oracle Forms -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="200">
-          <h3 class="text-xl font-semibold mb-2">Nahrazení technologie Oracle Forms</h3>
-          <p class="text-gray-600 flex-grow">
+        <div class="sebit-card flex flex-col" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="sebit-card__title">Nahrazení technologie Oracle Forms</h3>
+          <p class="sebit-card__body flex-grow">
             Pokud chcete odejít z technologie Oracle Forms, ale nechcete řešit přepis business logiky, máme pro vás ideální řešení.
           </p>
           <a href="#"
-             class="more-btn mt-4 block mx-auto bg-gray-200 text-black px-4 py-2 rounded hover:bg-sebit-navy hover:text-white transition"
+             class="sebit-btn sebit-btn--more mt-4 w-full more-btn"
              data-text="<h2 class='text-3xl font-bold mb-8 text-center'>Nahrazení technologie Oracle Forms</h2><div class='mt-8 space-y-6 text-left'><p><i class='fas fa-cubes text-blue-600 mr-2'></i><strong>Zachování logiky:</strong> Všechny procedury a formy zůstávají beze změny. Pomocí REST API se jednotlivé akce (tlačítka, formuláře) volají vzdáleně.</p><p><i class='fas fa-code-branch text-blue-600 mr-2'></i><strong>Obalení REST službami:</strong> Pro každou funkci a tlačítko existuje samostatný endpoint, čímž se minimalizuje riziko konfliktů a zjednodušuje správa.</p><p><i class='fas fa-laptop-code text-blue-600 mr-2'></i><strong>Moderní frontend:</strong> Původní Oracle Forms může nadále běžet na pozadí, zatímco uživatelé získají nové, moderní uživatelské rozhraní bez ztráty business logiky.</p><p><i class='fas fa-sync-alt text-blue-600 mr-2'></i><strong>Flexibilita a postupný přechod:</strong> Díky oddělené vrstvě REST API lze postupně migrovat jednotlivé části aplikace a vyhnout se kompletnímu přepisu.</p></div>">
             Zjistit více
           </a>
@@ -289,7 +289,7 @@
   <section id="reference" class="py-20 bg-sebit-navy text-white">
     <div class="container mx-auto px-4">
       <div class="text-center mb-12" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-4">Proč si vybrat SEBIT Solutions</h2>
+        <h2 class="sebit-h2 text-white">Proč si vybrat SEBIT Solutions</h2>
         <p class="text-gray-300 max-w-2xl mx-auto">
           Za více než 5 let na trhu jsme pomohli desítkám firem v České republice řešit jejich IT kapacitní potřeby.
         </p>
@@ -344,7 +344,7 @@
         </div>
       </div>
       <div class="text-center mt-12" data-aos="fade-up">
-        <a href="#kontakt" class="bg-sebit-lime text-sebit-navy px-10 py-4 rounded-full font-bold text-lg shadow-lg hover:opacity-90 transition">
+        <a href="#kontakt" class="sebit-btn sebit-btn--cta text-lg shadow-lg">
           Začněme spolupráci
         </a>
       </div>
@@ -355,7 +355,7 @@
   <section id="kontakt" class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="text-center mb-12" data-aos="fade-up">
-        <h2 class="text-4xl font-bold mb-4">Kontaktujte nás</h2>
+        <h2 class="sebit-h2">Kontaktujte nás</h2>
         <p class="text-lg text-gray-600">Máte dotazy? Rádi vám pomůžeme!</p>
       </div>
 
@@ -380,19 +380,19 @@
         <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
           <form id="contact-form" class="space-y-6">
             <div>
-              <label for="name" class="block text-gray-800 font-medium mb-2">Jméno</label>
-              <input type="text" id="name" name="from_name" required class="w-full border border-gray-300 px-4 py-3 rounded focus:outline-none focus:ring-2 focus:ring-sebit-navy focus:border-sebit-navy" placeholder="Vaše jméno">
+              <label for="name" class="sebit-label">Jméno</label>
+              <input type="text" id="name" name="from_name" required class="sebit-input" placeholder="Vaše jméno">
             </div>
             <div>
-              <label for="email" class="block text-gray-800 font-medium mb-2">Email</label>
-              <input type="email" id="email" name="from_email" required class="w-full border border-gray-300 px-4 py-3 rounded focus:outline-none focus:ring-2 focus:ring-sebit-navy focus:border-sebit-navy" placeholder="váš@email.com">
+              <label for="email" class="sebit-label">Email</label>
+              <input type="email" id="email" name="from_email" required class="sebit-input" placeholder="váš@email.com">
             </div>
             <div>
-              <label for="message" class="block text-gray-800 font-medium mb-2">Zpráva</label>
-              <textarea id="message" name="message" rows="5" required class="w-full border border-gray-300 px-4 py-3 rounded focus:outline-none focus:ring-2 focus:ring-sebit-navy focus:border-sebit-navy" placeholder="Vaše zpráva"></textarea>
+              <label for="message" class="sebit-label">Zpráva</label>
+              <textarea id="message" name="message" required class="sebit-textarea" placeholder="Vaše zpráva"></textarea>
             </div>
             <div id="form-status" class="hidden text-sm font-medium p-3 rounded"></div>
-            <button type="submit" id="submit-btn" class="w-full bg-sebit-navy text-white font-semibold py-3 rounded hover:bg-opacity-90 transition">
+            <button type="submit" id="submit-btn" class="sebit-btn sebit-btn--submit">
               Odeslat zprávu
             </button>
           </form>
@@ -558,10 +558,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener('DOMContentLoaded', function() {
       var refSection = document.getElementById('reference');
       if (refSection) {
-        var desktopNav = document.querySelector('nav ul.flex');
+        var desktopNav = document.querySelector('nav ul.sebit-nav');
         if (desktopNav) {
           var li = document.createElement('li');
-          li.innerHTML = '<a href="#reference" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Reference</a>';
+          li.innerHTML = '<a href="#reference" class="sebit-nav-link">Reference</a>';
           var kontaktLi = Array.from(desktopNav.querySelectorAll('a')).find(a => a.href.includes('#kontakt'));
           if (kontaktLi) desktopNav.insertBefore(li, kontaktLi.parentElement);
         }
