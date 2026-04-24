@@ -12,13 +12,31 @@ concurrency:
 permissions:
   contents: write
   pull-requests: write
+  pages: write
 
 jobs:
   deploy-preview:
     runs-on: ubuntu-latest
+    if: github.event.action != 'closed'
     steps:
-      - name: Checkout
+      - name: Checkout PR branch
         uses: actions/checkout@v4
+
+      - name: Create gh-pages branch if it doesn't exist
+        run: |
+          git fetch origin gh-pages || true
+          if ! git rev-parse --verify origin/gh-pages >/dev/null 2>&1; then
+            echo "Creating orphan gh-pages branch..."
+            git checkout --orphan gh-pages
+            git rm -rf . || true
+            echo "# GitHub Pages Preview" > index.html
+            git add index.html
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git commit -m "Initialize gh-pages branch for PR previews"
+            git push origin gh-pages
+            git checkout -
+          fi
 
       - name: Deploy PR Preview
         uses: rossjrw/pr-preview-action@v1
@@ -26,4 +44,19 @@ jobs:
           source-dir: .
           preview-branch: gh-pages
           umbrella-dir: pr-preview
-          action: auto
+          action: deploy
+
+  cleanup-preview:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'closed'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Remove PR Preview
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: .
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+          action: remove
