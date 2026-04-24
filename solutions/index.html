@@ -87,6 +87,40 @@
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <!-- SEBIT Design System tokens -->
+  <style>
+    :root {
+      /* Motion durations */
+      --dur-instant: 80ms;
+      --dur-fast:    160ms;
+      --dur-base:    240ms;
+      --dur-slow:    400ms;
+      --dur-slowest: 640ms;
+      /* Motion easings */
+      --ease-standard:   cubic-bezier(0.2, 0, 0, 1);
+      --ease-emphasized: cubic-bezier(0.3, 0, 0, 1);
+      --ease-exit:       cubic-bezier(0.4, 0, 1, 1);
+      --ease-in-out:     cubic-bezier(0.4, 0, 0.2, 1);
+      --ease-signature:  cubic-bezier(0.7, 0, 0.3, 1);
+    }
+    .card-hover {
+      transition: transform var(--dur-base) var(--ease-standard),
+                  box-shadow var(--dur-base) var(--ease-standard);
+    }
+    .btn-cta {
+      transition: background-color var(--dur-fast) var(--ease-standard),
+                  color            var(--dur-fast) var(--ease-standard),
+                  transform        var(--dur-fast) var(--ease-standard),
+                  opacity          var(--dur-fast) var(--ease-standard);
+    }
+    .btn-cta:hover { transform: translateY(-1px); }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 1ms !important;
+        transition-duration: 1ms !important;
+      }
+    }
+  </style>
   <!-- EmailJS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>
@@ -146,7 +180,7 @@
         <p class="text-lg md:text-2xl mb-8 max-w-2xl">
           Jednoduché a profesionální řešení vašich kapacitních problémů s vývojem, včetně pronájmu celých týmů.
         </p>
-        <a href="#kontakt" class="bg-white text-sebit-navy px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100 transition">
+        <a href="#kontakt" class="btn-cta bg-white text-sebit-navy px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100">
           Kontaktujte nás
         </a>
       </div>
@@ -196,7 +230,7 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Bodyshopping (T&M) -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="100">
+        <div class="p-6 bg-white rounded-lg shadow card-hover hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="100">
           <h3 class="text-xl font-semibold mb-2">Bodyshopping (T&M)</h3>
           <p class="text-gray-600 flex-grow">
             Poskytujeme vysoce kvalifikované IT odborníky, kteří posílí váš tým a pomohou vám dosáhnout vašich cílů.
@@ -208,7 +242,7 @@
           </a>
         </div>
         <!-- Team leasing -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="200">
+        <div class="p-6 bg-white rounded-lg shadow card-hover hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="200">
           <h3 class="text-xl font-semibold mb-2">Team leasing</h3>
           <p class="text-gray-600 flex-grow">
             Sestavíme pro vás na míru vytvořený tým profesionálů, který můžete flexibilně řídit podle svých potřeb.
@@ -220,7 +254,7 @@
           </a>
         </div>
         <!-- Dodávka na klíč (FT&FP) -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="300">
+        <div class="p-6 bg-white rounded-lg shadow card-hover hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="300">
           <h3 class="text-xl font-semibold mb-2">Dodávka na klíč (FT&FP)</h3>
           <p class="text-gray-600 flex-grow">
             Pokud upřednostňujete přesný časový plán, jasně definovaný rozsah projektu, smluvní záruky a kompletní řízení od začátku do konce, jsme tu pro Vás připraveni poskytnout špičkové služby.
@@ -246,7 +280,7 @@
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Správa základních registrů -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="100">
+        <div class="p-6 bg-white rounded-lg shadow card-hover hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="100">
           <h3 class="text-xl font-semibold mb-2">Správa základních registrů</h3>
           <p class="text-gray-600 flex-grow">
             Připravíme pro Vaši společnost kompletní implementaci na základní registry státu (SZR), včetně iniciálního ztotožnění klientského portfolia a průběžných aktualizací těchto údajů.
@@ -258,7 +292,7 @@
           </a>
         </div>
         <!-- Nahrazení technologie Oracle Forms -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="200">
+        <div class="p-6 bg-white rounded-lg shadow card-hover hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="200">
           <h3 class="text-xl font-semibold mb-2">Nahrazení technologie Oracle Forms</h3>
           <p class="text-gray-600 flex-grow">
             Pokud chcete odejít z technologie Oracle Forms, ale nechcete řešit přepis business logiky, máme pro vás ideální řešení.
