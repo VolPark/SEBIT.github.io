@@ -118,11 +118,11 @@
       </button>
       <!-- Desktopové menu -->
       <nav class="hidden md:block">
-        <ul class="flex space-x-6">
-          <li><a href="#hero" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Domů</a></li>
-          <li><a href="#rd" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Výzkum & Vývoj</a></li>
-          <li><a href="#technologie" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Technologie</a></li>
-          <li><a href="#kontakt" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Kontakt</a></li>
+        <ul class="sebit-nav">
+          <li><a href="#hero" class="sebit-nav-link">Domů</a></li>
+          <li><a href="#rd" class="sebit-nav-link">Výzkum & Vývoj</a></li>
+          <li><a href="#technologie" class="sebit-nav-link">Technologie</a></li>
+          <li><a href="#kontakt" class="sebit-nav-link">Kontakt</a></li>
         </ul>
       </nav>
     </div>
@@ -148,13 +148,13 @@
     <div class="container mx-auto max-w-5xl px-4 py-10 flex flex-col md:flex-row items-center text-center md:text-left">
       <!-- Textový obsah umístěný vlevo -->
       <div data-aos="fade-right" class="md:flex-1">
-        <h1 class="text-4xl md:text-6xl font-extrabold mb-4">
+        <h1 class="sebit-display text-white mb-4">
           SEBIT Labs
         </h1>
-        <p class="text-lg md:text-2xl mb-8 max-w-2xl">
+        <p class="sebit-lead text-gray-300 mb-8 max-w-2xl">
           Výzkum a vývoj nových technologií, inovativní laboratoře a prototypy digitálních řešení.
         </p>
-        <a href="#kontakt" class="bg-white text-sebit-navy px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100 transition">
+        <a href="#kontakt" class="sebit-btn sebit-btn--primary">
           Kontaktujte nás
         </a>
       </div>
@@ -168,26 +168,26 @@
 <!-- Divize sekce -->
   <section id="divisions" class="py-16 bg-sebit-navy">
   <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+    <div class="sebit-division-grid">
       <!-- Solutions -->
-      <a href="https://sebit.cz" class="block bg-white rounded-lg shadow hover:shadow-2xl transition p-4 h-30 text-center flex flex-col justify-center">
-        <img src="/sebit_solutions_light.svg" alt="SEBIT Solutions" class="mx-auto h-16 mb-2">
-        <p class="text-gray-600 text-sm">IT consulting a projekty na klíč.</p>
+      <a href="https://sebit.cz" class="sebit-division-tile">
+        <img src="/sebit_solutions_light.svg" alt="SEBIT Solutions" class="sebit-division-tile__logo">
+        <p class="sebit-division-tile__desc">IT consulting a projekty na klíč.</p>
       </a>
       <!-- Labs -->
-      <a href="https://sebit.cz/labs" class="block bg-white rounded-lg shadow hover:shadow-2xl transition p-4 h-30 text-center flex flex-col justify-center">
-        <img src="/sebit_labs_light.svg" alt="SEBIT Labs" class="mx-auto h-16 mb-2">
-        <p class="text-gray-600 text-sm">Inovační laboratoře a prototypy digitálních řešení.</p>
+      <a href="https://sebit.cz/labs" class="sebit-division-tile border-b-2 border-sebit-lime">
+        <img src="/sebit_labs_light.svg" alt="SEBIT Labs" class="sebit-division-tile__logo">
+        <p class="sebit-division-tile__desc">Inovační laboratoře a prototypy digitálních řešení.</p>
       </a>
       <!-- Medical -->
-      <a href="https://sebit.cz/Medical" class="block bg-white rounded-lg shadow hover:shadow-2xl transition p-4 h-30 text-center flex flex-col justify-center">
-        <img src="/sebit_medical_light.svg" alt="SEBIT Medical" class="mx-auto h-16 mb-2">
-        <p class="text-gray-600 text-sm">Zdraví na prvním místě.</p>
+      <a href="https://sebit.cz/Medical" class="sebit-division-tile">
+        <img src="/sebit_medical_light.svg" alt="SEBIT Medical" class="sebit-division-tile__logo">
+        <p class="sebit-division-tile__desc">Zdraví na prvním místě.</p>
       </a>
       <!-- Academy -->
-      <a href="https://sebit.cz/Academy" class="block bg-white rounded-lg shadow hover:shadow-2xl transition p-4 h-30 text-center flex flex-col justify-center">
-        <img src="/sebit_academy_light.svg" alt="SEBIT Academy" class="mx-auto h-16 mb-2">
-        <p class="text-gray-600 text-sm">Studentské stáže a kurzy IT dovedností.</p>
+      <a href="https://sebit.cz/Academy" class="sebit-division-tile">
+        <img src="/sebit_academy_light.svg" alt="SEBIT Academy" class="sebit-division-tile__logo">
+        <p class="sebit-division-tile__desc">Studentské stáže a kurzy IT dovedností.</p>
       </a>
     </div>
   </div>
@@ -197,63 +197,63 @@
   <section id="rd" class="py-20">
     <div class="container mx-auto px-4">
       <div class="text-center mb-12" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-4">Výzkum & Vývoj</h2>
+        <h2 class="sebit-h2">Výzkum & Vývoj</h2>
         <p class="text-gray-600">
           SEBIT Labs je naše R&D divize – místo, kde experimentujeme s novými technologiemi, stavíme prototypy a ověřujeme koncepty pro budoucí produkty.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Prototypy a PoC -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="100">
-          <div class="w-12 h-12 bg-sebit-navy rounded-full flex items-center justify-center mb-4">
-            <i class="fas fa-flask text-sebit-lime text-xl"></i>
+        <div class="sebit-card flex flex-col" data-aos="fade-up" data-aos-delay="100">
+          <div class="sebit-card__icon">
+            <i class="fas fa-flask"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2">Prototypy & Proof of Concept</h3>
-          <p class="text-gray-600 flex-grow">
+          <h3 class="sebit-card__title">Prototypy & Proof of Concept</h3>
+          <p class="sebit-card__body flex-grow">
             Pomáháme firmám ověřit technické koncepty rychle a levně. Od nápadu k funkčnímu prototypu za týdny, ne měsíce.
           </p>
-          <ul class="text-sm text-gray-500 mt-3 space-y-1">
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Rapid prototyping (2–4 týdny)</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Technická feasibility analýza</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> MVP development</li>
+          <ul class="sebit-list mt-3 space-y-1">
+            <li class="sebit-list__item">Rapid prototyping (2–4 týdny)</li>
+            <li class="sebit-list__item">Technická feasibility analýza</li>
+            <li class="sebit-list__item">MVP development</li>
           </ul>
-          <a href="#kontakt" class="mt-4 block mx-auto bg-gray-200 text-black px-4 py-2 rounded hover:bg-sebit-navy hover:text-white transition text-center">
+          <a href="#kontakt" class="sebit-btn sebit-btn--ghost mt-4 w-full">
             Konzultovat projekt
           </a>
         </div>
         <!-- AI/ML experimenty -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="200">
-          <div class="w-12 h-12 bg-sebit-navy rounded-full flex items-center justify-center mb-4">
-            <i class="fas fa-brain text-sebit-lime text-xl"></i>
+        <div class="sebit-card flex flex-col" data-aos="fade-up" data-aos-delay="200">
+          <div class="sebit-card__icon">
+            <i class="fas fa-brain"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2">AI & Machine Learning</h3>
-          <p class="text-gray-600 flex-grow">
+          <h3 class="sebit-card__title">AI & Machine Learning</h3>
+          <p class="sebit-card__body flex-grow">
             Experimentujeme s aplikacemi umělé inteligence v reálném kontextu – od prediktivní analytiky po generativní AI v podnikových procesech.
           </p>
-          <ul class="text-sm text-gray-500 mt-3 space-y-1">
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> LLM integrace a fine-tuning</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Prediktivní modely (Python, scikit-learn)</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> RAG architektury pro enterprise</li>
+          <ul class="sebit-list mt-3 space-y-1">
+            <li class="sebit-list__item">LLM integrace a fine-tuning</li>
+            <li class="sebit-list__item">Prediktivní modely (Python, scikit-learn)</li>
+            <li class="sebit-list__item">RAG architektury pro enterprise</li>
           </ul>
-          <a href="#kontakt" class="mt-4 block mx-auto bg-gray-200 text-black px-4 py-2 rounded hover:bg-sebit-navy hover:text-white transition text-center">
+          <a href="#kontakt" class="sebit-btn sebit-btn--ghost mt-4 w-full">
             Konzultovat projekt
           </a>
         </div>
         <!-- Open-source -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="300">
-          <div class="w-12 h-12 bg-sebit-navy rounded-full flex items-center justify-center mb-4">
-            <i class="fab fa-github text-sebit-lime text-xl"></i>
+        <div class="sebit-card flex flex-col" data-aos="fade-up" data-aos-delay="300">
+          <div class="sebit-card__icon">
+            <i class="fab fa-github"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2">Open-source projekty</h3>
-          <p class="text-gray-600 flex-grow">
+          <h3 class="sebit-card__title">Open-source projekty</h3>
+          <p class="sebit-card__body flex-grow">
             Věříme v otevřenou spolupráci. Přispíváme do open-source ekosystému a sdílíme naše výzkumné výstupy s komunitou.
           </p>
-          <ul class="text-sm text-gray-500 mt-3 space-y-1">
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> GitHub contributions</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Sdílení nástrojů a utilit</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Technické blog posty</li>
+          <ul class="sebit-list mt-3 space-y-1">
+            <li class="sebit-list__item">GitHub contributions</li>
+            <li class="sebit-list__item">Sdílení nástrojů a utilit</li>
+            <li class="sebit-list__item">Technické blog posty</li>
           </ul>
-          <a href="https://github.com/VolPark" target="_blank" rel="noopener noreferrer" class="mt-4 block mx-auto bg-gray-200 text-black px-4 py-2 rounded hover:bg-sebit-navy hover:text-white transition text-center">
+          <a href="https://github.com/VolPark" target="_blank" rel="noopener noreferrer" class="sebit-btn sebit-btn--ghost mt-4 w-full">
             GitHub profil
           </a>
         </div>
@@ -265,45 +265,45 @@
   <section id="technologie" class="py-20 bg-gray-100">
     <div class="container mx-auto px-4">
       <div class="text-center mb-12" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-4">Technologický stack</h2>
+        <h2 class="sebit-h2">Technologický stack</h2>
         <p class="text-gray-600">
           V Labs pracujeme s nejmodernějšími technologiemi – od edge computingu po cloud-native architektury.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Cloud & DevOps -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="100">
-          <div class="w-12 h-12 bg-sebit-navy rounded-full flex items-center justify-center mb-4">
-            <i class="fas fa-cloud text-sebit-lime text-xl"></i>
+        <div class="sebit-card flex flex-col" data-aos="fade-up" data-aos-delay="100">
+          <div class="sebit-card__icon">
+            <i class="fas fa-cloud"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2">Cloud-native & DevOps</h3>
-          <p class="text-gray-600 flex-grow">
+          <h3 class="sebit-card__title">Cloud-native & DevOps</h3>
+          <p class="sebit-card__body flex-grow">
             Navrhujeme a stavíme systémy připravené na cloud od začátku – kontejnerizace, orchestrace, CI/CD pipelines a monitoring.
           </p>
-          <ul class="text-sm text-gray-500 mt-3 space-y-1">
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Docker, Kubernetes</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> AWS / Azure / GCP</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> GitHub Actions, GitLab CI</li>
+          <ul class="sebit-list mt-3 space-y-1">
+            <li class="sebit-list__item">Docker, Kubernetes</li>
+            <li class="sebit-list__item">AWS / Azure / GCP</li>
+            <li class="sebit-list__item">GitHub Actions, GitLab CI</li>
           </ul>
-          <a href="#kontakt" class="mt-4 block mx-auto bg-gray-200 text-black px-4 py-2 rounded hover:bg-sebit-navy hover:text-white transition text-center">
+          <a href="#kontakt" class="sebit-btn sebit-btn--ghost mt-4 w-full">
             Spolupracovat
           </a>
         </div>
         <!-- IoT & Edge -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="200">
-          <div class="w-12 h-12 bg-sebit-navy rounded-full flex items-center justify-center mb-4">
-            <i class="fas fa-microchip text-sebit-lime text-xl"></i>
+        <div class="sebit-card flex flex-col" data-aos="fade-up" data-aos-delay="200">
+          <div class="sebit-card__icon">
+            <i class="fas fa-microchip"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2">IoT & Edge Computing</h3>
-          <p class="text-gray-600 flex-grow">
+          <h3 class="sebit-card__title">IoT & Edge Computing</h3>
+          <p class="sebit-card__body flex-grow">
             Propojujeme fyzický svět s digitálním. Vyvíjíme řešení pro sběr dat ze senzorů, edge processing a real-time analytiku.
           </p>
-          <ul class="text-sm text-gray-500 mt-3 space-y-1">
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> MQTT, REST API pro IoT</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Edge processing (Raspberry Pi, ESP32)</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Time-series databáze (InfluxDB)</li>
+          <ul class="sebit-list mt-3 space-y-1">
+            <li class="sebit-list__item">MQTT, REST API pro IoT</li>
+            <li class="sebit-list__item">Edge processing (Raspberry Pi, ESP32)</li>
+            <li class="sebit-list__item">Time-series databáze (InfluxDB)</li>
           </ul>
-          <a href="#kontakt" class="mt-4 block mx-auto bg-gray-200 text-black px-4 py-2 rounded hover:bg-sebit-navy hover:text-white transition text-center">
+          <a href="#kontakt" class="sebit-btn sebit-btn--ghost mt-4 w-full">
             Spolupracovat
           </a>
         </div>
@@ -315,7 +315,7 @@
   <section id="kontakt" class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="text-center mb-12" data-aos="fade-up">
-        <h2 class="text-4xl font-bold mb-4">Kontaktujte nás</h2>
+        <h2 class="sebit-h2">Kontaktujte nás</h2>
         <p class="text-lg text-gray-600">Máte dotazy? Rádi vám pomůžeme!</p>
       </div>
 
@@ -340,19 +340,19 @@
         <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
           <form id="contact-form" class="space-y-6">
             <div>
-              <label for="name" class="block text-gray-800 font-medium mb-2">Jméno</label>
-              <input type="text" id="name" name="from_name" required class="w-full border border-gray-300 px-4 py-3 rounded focus:outline-none focus:ring-2 focus:ring-sebit-navy focus:border-sebit-navy" placeholder="Vaše jméno">
+              <label for="name" class="sebit-label">Jméno</label>
+              <input type="text" id="name" name="from_name" required class="sebit-input" placeholder="Vaše jméno">
             </div>
             <div>
-              <label for="email" class="block text-gray-800 font-medium mb-2">Email</label>
-              <input type="email" id="email" name="from_email" required class="w-full border border-gray-300 px-4 py-3 rounded focus:outline-none focus:ring-2 focus:ring-sebit-navy focus:border-sebit-navy" placeholder="váš@email.com">
+              <label for="email" class="sebit-label">Email</label>
+              <input type="email" id="email" name="from_email" required class="sebit-input" placeholder="váš@email.com">
             </div>
             <div>
-              <label for="message" class="block text-gray-800 font-medium mb-2">Zpráva</label>
-              <textarea id="message" name="message" rows="5" required class="w-full border border-gray-300 px-4 py-3 rounded focus:outline-none focus:ring-2 focus:ring-sebit-navy focus:border-sebit-navy" placeholder="Vaše zpráva"></textarea>
+              <label for="message" class="sebit-label">Zpráva</label>
+              <textarea id="message" name="message" required class="sebit-textarea" placeholder="Vaše zpráva"></textarea>
             </div>
             <div id="form-status" class="hidden text-sm font-medium p-3 rounded"></div>
-            <button type="submit" id="submit-btn" class="w-full bg-sebit-navy text-white font-semibold py-3 rounded hover:bg-opacity-90 transition">
+            <button type="submit" id="submit-btn" class="sebit-btn sebit-btn--submit">
               Odeslat zprávu
             </button>
           </form>
