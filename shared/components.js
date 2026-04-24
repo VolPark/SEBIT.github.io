@@ -35,48 +35,50 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ── "Zjistit více" expandable sections (Modal) ──────────────────────────────
-  // Create a single modal overlay for the whole page
-  const modalOverlay = document.createElement('div');
-  modalOverlay.className = 'sebit-modal-overlay';
-  modalOverlay.innerHTML = `
-    <div class="sebit-modal" role="dialog" aria-modal="true">
-      <button class="sebit-modal__close" aria-label="Zavřít okno">&times;</button>
-      <div class="sebit-modal__content"></div>
-    </div>
-  `;
-  document.body.appendChild(modalOverlay);
-
-  const modalContent = modalOverlay.querySelector('.sebit-modal__content');
-  const modalClose = modalOverlay.querySelector('.sebit-modal__close');
-
-  function closeModal() {
-    modalOverlay.classList.remove('sebit-modal-overlay--active');
-    document.body.style.overflow = ''; // Restore scrolling
-  }
-
-  modalClose.addEventListener('click', closeModal);
-  modalOverlay.addEventListener('click', (e) => {
-    if (e.target === modalOverlay) closeModal();
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modalOverlay.classList.contains('sebit-modal-overlay--active')) {
-      closeModal();
-    }
-  });
-
+  // ── "Zjistit více" expandable sections ──────────────────────────────
   document.querySelectorAll('.more-btn').forEach(function(button) {
     button.addEventListener('click', function(e) {
       e.preventDefault();
+      // Remove all existing expanded sections
+      document.querySelectorAll('.more-info').forEach(el => el.remove());
       const text = this.dataset.text;
       if (!text) {
         console.warn("Atribut data-text nebyl nalezen u tlačítka!");
         return;
       }
-      
-      modalContent.innerHTML = text;
-      modalOverlay.classList.add('sebit-modal-overlay--active');
-      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+
+      let parentElement;
+      if (window.innerWidth < 768) {
+        parentElement = this.parentElement;
+      } else {
+        parentElement = this.closest('.service-card') || this.closest('section');
+      }
+
+      if (!parentElement) {
+        console.error("Nepodařilo se najít rodičovský element.");
+        return;
+      }
+
+      const extraSection = document.createElement('section');
+      extraSection.className = "py-20 bg-white more-info";
+      extraSection.style.display = "block";
+      extraSection.style.opacity = "1";
+      extraSection.innerHTML = `
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-12">
+            <p>${text}</p>
+          </div>
+        </div>
+      `;
+      parentElement.insertAdjacentElement('afterend', extraSection);
+
+      if (window.innerWidth < 768) {
+        extraSection.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      if (typeof AOS !== 'undefined') {
+        AOS.refresh();
+      }
     });
   });
 
@@ -85,23 +87,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const formStatus = document.getElementById('form-status');
   const submitBtn = document.getElementById('submit-btn');
 
-  // SVG pro inline loader (three-arrow march z Design Systemu)
-  const loaderSvg = `
-    <span class="sebit-loader__march" style="gap: 6px; transform: scale(0.8);">
-      <svg viewBox="0 0 64 64" style="width: 12px; height: 12px;"><polyline points="16,20 40,32 16,44" stroke="#C6FF00" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-      <svg viewBox="0 0 64 64" style="width: 12px; height: 12px;"><polyline points="16,20 40,32 16,44" stroke="#C6FF00" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-      <svg viewBox="0 0 64 64" style="width: 12px; height: 12px;"><polyline points="16,20 40,32 16,44" stroke="#C6FF00" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-    </span>
-  `;
-
   if (contactForm && formStatus && submitBtn) {
-    // Uložíme původní obsah tlačítka (např. "Odeslat zprávu")
-    const originalBtnContent = submitBtn.innerHTML;
-
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
       submitBtn.disabled = true;
-      submitBtn.innerHTML = loaderSvg + ' <span>Odesílám...</span>';
+      submitBtn.textContent = 'Odesílám...';
       formStatus.className = 'hidden text-sm font-medium p-3 rounded';
 
       emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
@@ -118,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .finally(function() {
           submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnContent;
+          submitBtn.textContent = 'Odeslat zprávu';
         });
     });
   }
@@ -140,10 +130,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // ── Dynamic "Reference" nav link on Solutions pages ─────────────────
   const refSection = document.getElementById('reference');
   if (refSection) {
-    const desktopNav = document.querySelector('nav ul.sebit-nav');
+    const desktopNav = document.querySelector('nav ul.flex');
     if (desktopNav) {
       const li = document.createElement('li');
-      li.innerHTML = '<a href="#reference" class="sebit-nav-link">Reference</a>';
+      li.innerHTML = '<a href="#reference" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Reference</a>';
       const kontaktLi = Array.from(desktopNav.querySelectorAll('a')).find(a => a.href.includes('#kontakt'));
       if (kontaktLi) desktopNav.insertBefore(li, kontaktLi.parentElement);
     }
