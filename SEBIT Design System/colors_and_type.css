@@ -103,10 +103,12 @@
 
 html, body {
   font-family: var(--font-sans);
-  color: var(--fg-2);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: var(--leading-normal);
+  /* NOTE: color is NOT set here to avoid overriding Tailwind's
+     text-white / text-gray-800 etc. on individual elements.
+     Use Tailwind classes or .sebit-body for paragraph color. */
 }
 
 /* Display — hero h1. Mobile 2.25rem (text-4xl), desktop 3.75rem (text-6xl) */
@@ -146,8 +148,10 @@ h1.sebit-display {
   color: var(--fg-on-navy-muted);
 }
 
-/* Body — default paragraph */
-.sebit-body, p {
+/* Body — default paragraph.
+   Use .sebit-body explicitly; avoid styling bare `p` to prevent
+   overriding inherited colors (e.g. white text on navy hero). */
+.sebit-body {
   font-size: 1rem;
   line-height: var(--leading-relaxed);
   color: var(--fg-3);
@@ -173,6 +177,7 @@ h1.sebit-display {
   line-height: 1;
 }
 
-/* Links — navy by default, lime on hover (the universal SEBIT link style) */
-a { color: var(--fg-link); text-decoration: none; }
-a:hover { color: var(--fg-accent); }
+/* Links — use .sebit-link explicitly; bare `a` is not styled
+   to avoid overriding Tailwind link colors on nav/hero/footer. */
+.sebit-link { color: var(--fg-link); text-decoration: none; }
+.sebit-link:hover { color: var(--fg-accent); }
