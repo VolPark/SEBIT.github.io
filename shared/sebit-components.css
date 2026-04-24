@@ -1,0 +1,588 @@
+/* =========================================================================
+   SEBIT Components — shared/sebit-components.css
+   Reusable UI component classes extracted from the SEBIT Design System.
+   Import AFTER colors_and_type.css.
+   ========================================================================= */
+
+/* =========================================================================
+   1. NAVIGATION
+   Based on: preview/components_nav.html
+   ========================================================================= */
+
+.sebit-nav {
+  display: flex;
+  gap: 1.375rem;         /* 22px — DS spec */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.sebit-nav-link {
+  color: var(--fg-2);
+  font-size: 0.8125rem;  /* 13px */
+  font-weight: var(--fw-medium);
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: color var(--dur-fast, 160ms) var(--ease-standard, ease),
+              border-color var(--dur-fast, 160ms) var(--ease-standard, ease);
+}
+
+.sebit-nav-link:hover {
+  color: var(--sebit-navy);
+}
+
+.sebit-nav-link--active {
+  color: var(--sebit-navy);
+  font-weight: var(--fw-semibold);
+  border-bottom-color: var(--sebit-lime);
+}
+
+/* =========================================================================
+   2. BUTTONS
+   Based on: preview/components_buttons.html
+   4 variants: primary (on navy), cta (lime), submit (navy solid), more
+   ========================================================================= */
+
+.sebit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: inherit;
+  font-weight: var(--fw-semibold);
+  font-size: 0.8125rem;  /* 13px */
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--dur-fast, 160ms) var(--ease-standard, ease),
+              transform var(--dur-fast, 160ms) var(--ease-standard, ease),
+              box-shadow var(--dur-fast, 160ms) var(--ease-standard, ease);
+}
+
+.sebit-btn:hover {
+  transform: translateY(-1px);
+}
+
+.sebit-btn:active {
+  transform: translateY(0);
+}
+
+/* Primary — white on navy background (hero CTA) */
+.sebit-btn--primary {
+  background: var(--sebit-white);
+  color: var(--sebit-navy);
+  padding: 0.625rem 1.375rem;  /* 10px 22px */
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-lg);
+}
+
+.sebit-btn--primary:hover {
+  box-shadow: var(--shadow-2xl);
+}
+
+/* CTA — lime accent (closing CTA, "Začněme spolupráci") */
+.sebit-btn--cta {
+  background: var(--sebit-lime);
+  color: var(--sebit-navy);
+  padding: 0.75rem 1.75rem;   /* 12px 28px */
+  border-radius: var(--radius-pill);
+  font-weight: var(--fw-bold);
+  font-size: 0.875rem;        /* 14px */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15);
+}
+
+.sebit-btn--cta:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* Submit — navy solid (form submit) */
+.sebit-btn--submit {
+  background: var(--sebit-navy);
+  color: var(--sebit-white);
+  padding: 0.625rem 1.375rem;
+  border-radius: var(--radius-sm);
+  width: 100%;
+}
+
+.sebit-btn--submit:hover {
+  background: var(--navy-500);
+}
+
+/* More — gray disclosure ("Zjistit více") */
+.sebit-btn--more {
+  background: var(--gray-200);
+  color: var(--sebit-black);
+  padding: 0.5rem 1rem;       /* 8px 16px */
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;         /* 12px */
+}
+
+.sebit-btn--more:hover {
+  background: var(--gray-300);
+}
+
+/* Ghost — transparent with border (secondary actions) */
+.sebit-btn--ghost {
+  background: transparent;
+  color: var(--sebit-navy);
+  padding: 0.625rem 1.125rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--gray-300);
+}
+
+.sebit-btn--ghost:hover {
+  background: var(--gray-50);
+  border-color: var(--sebit-navy);
+}
+
+/* Arrow icon inside button */
+.sebit-btn__arrow {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+/* =========================================================================
+   3. CARDS
+   Based on: preview/components_cards.html
+   ========================================================================= */
+
+.sebit-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  box-shadow: var(--shadow);
+  transition: transform var(--dur-base, 240ms) var(--ease-standard, ease),
+              box-shadow var(--dur-base, 240ms) var(--ease-standard, ease);
+}
+
+.sebit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2xl);
+}
+
+.sebit-card__title {
+  margin: 0 0 0.5rem;
+  color: var(--fg-1);
+  font-size: 1rem;
+  font-weight: var(--fw-semibold);
+}
+
+.sebit-card__body {
+  margin: 0 0 0.75rem;
+  color: var(--fg-3);
+  font-size: 0.8125rem;
+  line-height: var(--leading-relaxed);
+}
+
+/* Card icon circle — navy bg, lime icon */
+.sebit-card__icon {
+  width: 2.625rem;          /* 42px */
+  height: 2.625rem;
+  border-radius: var(--radius-pill);
+  background: var(--sebit-navy);
+  color: var(--sebit-lime);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.625rem;
+  font-size: 1.125rem;
+  font-weight: var(--fw-extrabold);
+}
+
+/* =========================================================================
+   4. FORM INPUTS
+   Based on: preview/components_forms.html
+   ========================================================================= */
+
+.sebit-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: var(--fw-medium);
+  color: var(--fg-2);
+  margin-bottom: 0.25rem;
+}
+
+.sebit-input,
+.sebit-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 0.5625rem 0.75rem;   /* 9px 12px */
+  font-family: inherit;
+  font-size: 0.8125rem;
+  color: var(--fg-2);
+  background: var(--bg-0);
+  outline: none;
+  transition: border-color var(--dur-fast, 160ms) var(--ease-standard, ease),
+              box-shadow var(--dur-fast, 160ms) var(--ease-standard, ease);
+}
+
+.sebit-input:focus,
+.sebit-textarea:focus {
+  border-color: var(--sebit-navy);
+  box-shadow: 0 0 0 2px rgba(0, 43, 92, 0.3);
+}
+
+.sebit-textarea {
+  resize: vertical;
+  min-height: 4.5rem;
+}
+
+.sebit-input::placeholder,
+.sebit-textarea::placeholder {
+  color: var(--fg-muted);
+}
+
+/* =========================================================================
+   5. STAT BLOCKS
+   Based on: preview/components_stats.html
+   ========================================================================= */
+
+.sebit-stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  text-align: center;
+}
+
+.sebit-stat-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sebit-stat-block__divider {
+  width: 1.75rem;           /* 28px */
+  height: 3px;
+  background: var(--sebit-lime);
+  border-radius: 2px;
+}
+
+.sebit-stat-block__value {
+  font-size: 3rem;           /* 48px */
+  font-weight: var(--fw-extrabold);
+  color: var(--sebit-white);
+  line-height: 1;
+  letter-spacing: var(--ls-tight);
+}
+
+.sebit-stat-block__label {
+  color: var(--gray-300);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+/* =========================================================================
+   6. TESTIMONIALS
+   Based on: preview/components_testimonial.html
+   Glassmorphism card on navy background
+   ========================================================================= */
+
+.sebit-testimonial {
+  background: var(--bg-navy-translucent);
+  border: 1px solid var(--border-navy-translucent);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.sebit-testimonial__quote-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  flex-shrink: 0;
+  border-radius: var(--radius-pill);
+  background: var(--sebit-lime);
+  color: var(--sebit-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.25rem;
+  font-family: Georgia, serif;
+}
+
+.sebit-testimonial__text {
+  margin: 0 0 0.5rem;
+  color: var(--gray-200);
+  font-style: italic;
+  font-size: 0.8125rem;
+  line-height: var(--leading-relaxed);
+}
+
+.sebit-testimonial__attrib {
+  color: var(--sebit-lime);
+  font-weight: var(--fw-semibold);
+  font-size: 0.6875rem;   /* 11px */
+}
+
+/* =========================================================================
+   7. ICON RENDERING MODES
+   Based on: preview/iconography.html
+   3 modes: navy-lime (primary), outline, accent
+   ========================================================================= */
+
+.sebit-icon {
+  width: 3.25rem;           /* 52px */
+  height: 3.25rem;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+/* Primary: navy background, lime glyph */
+.sebit-icon--navy {
+  background: var(--sebit-navy);
+  color: var(--sebit-lime);
+}
+
+/* Outline: white bg + navy border, navy glyph */
+.sebit-icon--outline {
+  background: var(--sebit-white);
+  border: 1.5px solid var(--sebit-navy);
+  color: var(--sebit-navy);
+}
+
+/* Accent: lime background, navy glyph (hero highlights) */
+.sebit-icon--accent {
+  background: var(--sebit-lime);
+  color: var(--sebit-navy);
+}
+
+/* Small icon variant (inline, lists) */
+.sebit-icon--sm {
+  width: 2rem;
+  height: 2rem;
+  font-size: 0.875rem;
+}
+
+/* =========================================================================
+   8. ARROW DIVIDER
+   Branded section separator using the SEBIT arrow motif
+   ========================================================================= */
+
+.sebit-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 0;
+}
+
+.sebit-divider__line {
+  flex: 1;
+  height: 1px;
+  background: var(--gray-200);
+}
+
+.sebit-divider__arrow {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+/* On-navy variant */
+.sebit-divider--navy .sebit-divider__line {
+  background: var(--border-navy-translucent);
+}
+
+/* =========================================================================
+   9. ARROW BULLET LIST
+   Replace standard bullets with the SEBIT arrow
+   ========================================================================= */
+
+.sebit-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sebit-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  padding: 0.375rem 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--fg-3);
+}
+
+.sebit-list__item::before {
+  content: '';
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  margin-top: 5px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><polyline points='16,20 40,32 16,44' stroke='%23002B5C' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* On-navy variant — lime arrow */
+.sebit-list--navy .sebit-list__item::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><polyline points='16,20 40,32 16,44' stroke='%23C6FF00' stroke-width='10' stroke-linecap='round' stroke-linejoin='round' fill='none'/></svg>");
+}
+
+.sebit-list--navy .sebit-list__item {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* =========================================================================
+   10. DIVISION TILES
+   Based on: preview/components_divisions.html
+   ========================================================================= */
+
+.sebit-division-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.625rem;
+}
+
+.sebit-division-tile {
+  background: var(--sebit-white);
+  border-radius: var(--radius-md);
+  padding: 0.875rem 0.625rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  text-decoration: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  min-height: 7.5rem;
+  transition: box-shadow var(--dur-fast, 160ms) var(--ease-standard, ease),
+              transform var(--dur-fast, 160ms) var(--ease-standard, ease);
+}
+
+.sebit-division-tile:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.sebit-division-tile__logo {
+  height: 2.5rem;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.sebit-division-tile__desc {
+  margin: 0;
+  color: var(--fg-3);
+  font-size: 0.625rem;
+  line-height: 1.4;
+}
+
+/* =========================================================================
+   11. RESPONSIVE
+   ========================================================================= */
+
+@media (max-width: 768px) {
+  .sebit-nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .sebit-stat-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .sebit-division-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================================================================
+   12. MODAL (Dialog)
+   ========================================================================= */
+
+.sebit-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: rgba(0, 43, 92, 0.7); /* navy translucent */
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur-base, 240ms) var(--ease-standard, ease),
+              visibility var(--dur-base, 240ms) var(--ease-standard, ease);
+}
+
+.sebit-modal-overlay--active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sebit-modal {
+  background: var(--sebit-white);
+  border-radius: var(--radius-lg);
+  max-width: 50rem;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: var(--space-8);
+  box-shadow: var(--shadow-2xl);
+  transform: translateY(20px) scale(0.95);
+  transition: transform var(--dur-slow, 400ms) var(--ease-signature, ease);
+  position: relative;
+}
+
+.sebit-modal-overlay--active .sebit-modal {
+  transform: translateY(0) scale(1);
+}
+
+.sebit-modal__close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--fg-muted);
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color var(--dur-instant, 80ms) var(--ease-standard, ease);
+}
+
+.sebit-modal__close:hover {
+  color: var(--sebit-navy);
+}
+
+/* =========================================================================
+   13. REDUCED MOTION
+   Per DS motion rules: all transitions → instant, transforms → none
+   ========================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .sebit-btn,
+  .sebit-card,
+  .sebit-nav-link,
+  .sebit-input,
+  .sebit-textarea,
+  .sebit-division-tile,
+  .sebit-modal-overlay,
+  .sebit-modal {
+    transition-duration: 0ms !important;
+  }
+
+  .sebit-card:hover,
+  .sebit-btn:hover,
+  .sebit-division-tile:hover {
+    transform: none !important;
+  }
+}

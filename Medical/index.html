@@ -59,37 +59,21 @@
   <!-- Preconnect pro rychlejší načítání externích zdrojů -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.tailwindcss.com">
-  <link rel="dns-prefetch" href="https://kit.fontawesome.com">
+    <link rel="dns-prefetch" href="https://kit.fontawesome.com">
   <link rel="dns-prefetch" href="https://unpkg.com">
 
   <!-- Google Fonts – Inter (brand typography) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- SEBIT Design System – centralized design tokens -->
-  <link rel="stylesheet" href="/SEBIT Design System/colors_and_type.css">
+  <link rel="stylesheet" href="../SEBIT Design System/colors_and_type.css">
+  <link rel="stylesheet" href="../shared/sebit-components.css">
 
   <!-- Page loader (splash screen) -->
-  <link rel="stylesheet" href="/shared/loader.css">
-  <script src="/shared/loader.js"></script>
+  <link rel="stylesheet" href="../shared/loader.css">
+  <script src="../shared/loader.js"></script>
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          'sebit-navy': '#002B5C',
-          'sebit-lime': '#C6FF00'
-        },
-        fontFamily: {
-          sans: ['Inter', 'sans-serif']
-        }
-      }
-    }
-  }
-  </script>
+  
   <!-- AOS CSS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <!-- Font Awesome -->
@@ -98,6 +82,21 @@
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>
     (function() { emailjs.init("YOUR_PUBLIC_KEY"); })();
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'sebit-navy': '#002B5C',
+            'sebit-lime': '#C6FF00'
+          }
+        }
+      }
+    }
   </script>
 </head>
 <body class="antialiased text-gray-800">
@@ -117,11 +116,11 @@
       </button>
       <!-- Desktopové menu -->
       <nav class="hidden md:block">
-        <ul class="flex space-x-6">
-          <li><a href="#hero" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Domů</a></li>
-          <li><a href="#reseni" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Řešení</a></li>
-          <li><a href="#projekty" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Projekty</a></li>
-          <li><a href="#kontakt" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Kontakt</a></li>
+        <ul class="sebit-nav">
+          <li><a href="#hero" class="sebit-nav-link">Domů</a></li>
+          <li><a href="#reseni" class="sebit-nav-link">Řešení</a></li>
+          <li><a href="#projekty" class="sebit-nav-link">Projekty</a></li>
+          <li><a href="#kontakt" class="sebit-nav-link">Kontakt</a></li>
         </ul>
       </nav>
     </div>
@@ -147,13 +146,13 @@
     <div class="container mx-auto max-w-5xl px-4 py-10 flex flex-col md:flex-row items-center text-center md:text-left">
       <!-- Textový obsah umístěný vlevo -->
       <div data-aos="fade-right" class="md:flex-1">
-        <h1 class="text-4xl md:text-6xl font-extrabold mb-4">
+        <h1 class="sebit-display text-white mb-4">
           SEBIT Medical
         </h1>
-        <p class="text-lg md:text-2xl mb-8 max-w-2xl">
+        <p class="sebit-lead text-gray-300 mb-8 max-w-2xl">
           Naším cílem je přinášet moderní technologie a odborné know-how pro lepší kvalitu života, delší aktivní věk a možnost fyzioterapie moderními technologiemi.
         </p>
-        <a href="#kontakt" class="bg-white text-sebit-navy px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100 transition">
+        <a href="#kontakt" class="sebit-btn sebit-btn--primary">
           Kontaktujte nás
         </a>
       </div>
@@ -167,26 +166,26 @@
 <!-- Divize sekce -->
   <section id="divisions" class="py-16 bg-sebit-navy">
   <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+    <div class="sebit-division-grid">
       <!-- Solutions -->
-      <a href="https://sebit.cz" class="block bg-white rounded-lg shadow hover:shadow-2xl transition p-4 h-30 text-center flex flex-col justify-center">
-        <img src="/sebit_solutions_light.svg" alt="SEBIT Solutions" class="mx-auto h-16 mb-2">
-        <p class="text-gray-600 text-sm">IT consulting a projekty na klíč.</p>
+      <a href="https://sebit.cz" class="sebit-division-tile">
+        <img src="/sebit_solutions_light.svg" alt="SEBIT Solutions" class="sebit-division-tile__logo">
+        <p class="sebit-division-tile__desc">IT consulting a projekty na klíč.</p>
       </a>
       <!-- Labs -->
-      <a href="https://sebit.cz/labs" class="block bg-white rounded-lg shadow hover:shadow-2xl transition p-4 h-30 text-center flex flex-col justify-center">
-        <img src="/sebit_labs_light.svg" alt="SEBIT Labs" class="mx-auto h-16 mb-2">
-        <p class="text-gray-600 text-sm">Inovační laboratoře a prototypy digitálních řešení.</p>
+      <a href="https://sebit.cz/labs" class="sebit-division-tile">
+        <img src="/sebit_labs_light.svg" alt="SEBIT Labs" class="sebit-division-tile__logo">
+        <p class="sebit-division-tile__desc">Inovační laboratoře a prototypy digitálních řešení.</p>
       </a>
       <!-- Medical -->
-      <a href="https://sebit.cz/Medical" class="block bg-white rounded-lg shadow hover:shadow-2xl transition p-4 h-30 text-center flex flex-col justify-center">
-        <img src="/sebit_medical_light.svg" alt="SEBIT Medical" class="mx-auto h-16 mb-2">
-        <p class="text-gray-600 text-sm">Zdraví na prvním místě.</p>
+      <a href="https://sebit.cz/Medical" class="sebit-division-tile border-b-2 border-sebit-lime">
+        <img src="/sebit_medical_light.svg" alt="SEBIT Medical" class="sebit-division-tile__logo">
+        <p class="sebit-division-tile__desc">Zdraví na prvním místě.</p>
       </a>
       <!-- Academy -->
-      <a href="https://sebit.cz/Academy" class="block bg-white rounded-lg shadow hover:shadow-2xl transition p-4 h-30 text-center flex flex-col justify-center">
-        <img src="/sebit_academy_light.svg" alt="SEBIT Academy" class="mx-auto h-16 mb-2">
-        <p class="text-gray-600 text-sm">Studentské stáže a kurzy IT dovedností.</p>
+      <a href="https://sebit.cz/Academy" class="sebit-division-tile">
+        <img src="/sebit_academy_light.svg" alt="SEBIT Academy" class="sebit-division-tile__logo">
+        <p class="sebit-division-tile__desc">Studentské stáže a kurzy IT dovedností.</p>
       </a>
     </div>
   </div>
@@ -196,63 +195,63 @@
   <section id="reseni" class="py-20">
     <div class="container mx-auto px-4">
       <div class="text-center mb-12" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-4">Naše řešení pro zdravotnictví</h2>
+        <h2 class="sebit-h2">Naše řešení pro zdravotnictví</h2>
         <p class="text-gray-600">
           Přinášíme moderní technologie do zdravotnictví – od digitalizace dokumentace po systémové integrace dle standardů HL7 a FHIR.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Digitalizace dokumentace -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="100">
-          <div class="w-12 h-12 bg-sebit-navy rounded-full flex items-center justify-center mb-4">
-            <i class="fas fa-file-medical-alt text-sebit-lime text-xl"></i>
+        <div class="sebit-card flex flex-col" data-aos="fade-up" data-aos-delay="100">
+          <div class="sebit-card__icon">
+            <i class="fas fa-file-medical-alt"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2">Digitalizace dokumentace</h3>
-          <p class="text-gray-600 flex-grow">
+          <h3 class="sebit-card__title">Digitalizace dokumentace</h3>
+          <p class="sebit-card__body flex-grow">
             Pomáháme zdravotnickým zařízením přejít z papírové dokumentace na moderní digitální systémy s plnou integritou a GDPR shodností.
           </p>
-          <ul class="text-sm text-gray-500 mt-3 space-y-1">
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Elektronická zdravotní dokumentace (EHR)</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Digitální podpis a archivace</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> GDPR compliance</li>
+          <ul class="sebit-list mt-3 space-y-1">
+            <li class="sebit-list__item">Elektronická zdravotní dokumentace (EHR)</li>
+            <li class="sebit-list__item">Digitální podpis a archivace</li>
+            <li class="sebit-list__item">GDPR compliance</li>
           </ul>
-          <a href="#kontakt" class="mt-4 block mx-auto bg-gray-200 text-black px-4 py-2 rounded hover:bg-sebit-navy hover:text-white transition text-center">
+          <a href="#kontakt" class="sebit-btn sebit-btn--ghost mt-4 w-full">
             Kontaktovat
           </a>
         </div>
         <!-- Systémové integrace -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="200">
-          <div class="w-12 h-12 bg-sebit-navy rounded-full flex items-center justify-center mb-4">
-            <i class="fas fa-project-diagram text-sebit-lime text-xl"></i>
+        <div class="sebit-card flex flex-col" data-aos="fade-up" data-aos-delay="200">
+          <div class="sebit-card__icon">
+            <i class="fas fa-project-diagram"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2">Systémové integrace (HL7 / FHIR)</h3>
-          <p class="text-gray-600 flex-grow">
+          <h3 class="sebit-card__title">Systémové integrace (HL7 / FHIR)</h3>
+          <p class="sebit-card__body flex-grow">
             Propojujeme nemocniční informační systémy (NIS), laboratorní systémy (LIS) a jiné zdravotnické aplikace dle mezinárodních standardů.
           </p>
-          <ul class="text-sm text-gray-500 mt-3 space-y-1">
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> HL7 v2 / HL7 FHIR R4</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> API pro zdravotnické registry</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Interoperabilita systémů</li>
+          <ul class="sebit-list mt-3 space-y-1">
+            <li class="sebit-list__item">HL7 v2 / HL7 FHIR R4</li>
+            <li class="sebit-list__item">API pro zdravotnické registry</li>
+            <li class="sebit-list__item">Interoperabilita systémů</li>
           </ul>
-          <a href="#kontakt" class="mt-4 block mx-auto bg-gray-200 text-black px-4 py-2 rounded hover:bg-sebit-navy hover:text-white transition text-center">
+          <a href="#kontakt" class="sebit-btn sebit-btn--ghost mt-4 w-full">
             Kontaktovat
           </a>
         </div>
         <!-- Telemedicína -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="300">
-          <div class="w-12 h-12 bg-sebit-navy rounded-full flex items-center justify-center mb-4">
-            <i class="fas fa-heartbeat text-sebit-lime text-xl"></i>
+        <div class="sebit-card flex flex-col" data-aos="fade-up" data-aos-delay="300">
+          <div class="sebit-card__icon">
+            <i class="fas fa-heartbeat"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2">Telemedicína & Remote monitoring</h3>
-          <p class="text-gray-600 flex-grow">
+          <h3 class="sebit-card__title">Telemedicína & Remote monitoring</h3>
+          <p class="sebit-card__body flex-grow">
             Vyvíjíme řešení pro vzdálenou péči o pacienty – od videokonzultací po IoT senzory pro kontinuální monitorování vitálních funkcí.
           </p>
-          <ul class="text-sm text-gray-500 mt-3 space-y-1">
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Videokonzultace platformy</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> IoT wearable integrace</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Real-time alerting</li>
+          <ul class="sebit-list mt-3 space-y-1">
+            <li class="sebit-list__item">Videokonzultace platformy</li>
+            <li class="sebit-list__item">IoT wearable integrace</li>
+            <li class="sebit-list__item">Real-time alerting</li>
           </ul>
-          <a href="#kontakt" class="mt-4 block mx-auto bg-gray-200 text-black px-4 py-2 rounded hover:bg-sebit-navy hover:text-white transition text-center">
+          <a href="#kontakt" class="sebit-btn sebit-btn--ghost mt-4 w-full">
             Kontaktovat
           </a>
         </div>
@@ -264,45 +263,45 @@
   <section id="projekty" class="py-20 bg-gray-100">
     <div class="container mx-auto px-4">
       <div class="text-center mb-12" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-4">Compliance & bezpečnost dat</h2>
+        <h2 class="sebit-h2">Compliance & bezpečnost dat</h2>
         <p class="text-gray-600">
           Zdravotnická data jsou tou nejcitlivější kategorií osobních údajů. Naše řešení jsou navrhována s ohledem na nejvyšší standardy bezpečnosti a regulatorní shody.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- GDPR ve zdravotnictví -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="100">
-          <div class="w-12 h-12 bg-sebit-navy rounded-full flex items-center justify-center mb-4">
-            <i class="fas fa-shield-alt text-sebit-lime text-xl"></i>
+        <div class="sebit-card flex flex-col" data-aos="fade-up" data-aos-delay="100">
+          <div class="sebit-card__icon">
+            <i class="fas fa-shield-alt"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2">GDPR ve zdravotnictví</h3>
-          <p class="text-gray-600 flex-grow">
+          <h3 class="sebit-card__title">GDPR ve zdravotnictví</h3>
+          <p class="sebit-card__body flex-grow">
             Zdravotnická data jsou zvláštní kategorií osobních údajů dle čl. 9 GDPR. Pomáháme zavést správné technické a organizační opatření pro bezpečné zpracování.
           </p>
-          <ul class="text-sm text-gray-500 mt-3 space-y-1">
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Analýza rizik zpracování (DPIA)</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Šifrování a pseudonymizace</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Záznamy o zpracování</li>
+          <ul class="sebit-list mt-3 space-y-1">
+            <li class="sebit-list__item">Analýza rizik zpracování (DPIA)</li>
+            <li class="sebit-list__item">Šifrování a pseudonymizace</li>
+            <li class="sebit-list__item">Záznamy o zpracování</li>
           </ul>
-          <a href="#kontakt" class="mt-4 block mx-auto bg-gray-200 text-black px-4 py-2 rounded hover:bg-sebit-navy hover:text-white transition text-center">
+          <a href="#kontakt" class="sebit-btn sebit-btn--ghost mt-4 w-full">
             Konzultovat
           </a>
         </div>
         <!-- Kybernetická bezpečnost -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="200">
-          <div class="w-12 h-12 bg-sebit-navy rounded-full flex items-center justify-center mb-4">
-            <i class="fas fa-lock text-sebit-lime text-xl"></i>
+        <div class="sebit-card flex flex-col" data-aos="fade-up" data-aos-delay="200">
+          <div class="sebit-card__icon">
+            <i class="fas fa-lock"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2">Kybernetická bezpečnost (ZoKB)</h3>
-          <p class="text-gray-600 flex-grow">
+          <h3 class="sebit-card__title">Kybernetická bezpečnost (ZoKB)</h3>
+          <p class="sebit-card__body flex-grow">
             Zdravotnická zařízení jsou kritickou infrastrukturou. Pomáháme s plněním povinností dle Zákona o kybernetické bezpečnosti (č. 181/2014 Sb.).
           </p>
-          <ul class="text-sm text-gray-500 mt-3 space-y-1">
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Kategorizace aktiv a rizik</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Bezpečnostní politiky a procesy</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Audit a penetrační testování</li>
+          <ul class="sebit-list mt-3 space-y-1">
+            <li class="sebit-list__item">Kategorizace aktiv a rizik</li>
+            <li class="sebit-list__item">Bezpečnostní politiky a procesy</li>
+            <li class="sebit-list__item">Audit a penetrační testování</li>
           </ul>
-          <a href="#kontakt" class="mt-4 block mx-auto bg-gray-200 text-black px-4 py-2 rounded hover:bg-sebit-navy hover:text-white transition text-center">
+          <a href="#kontakt" class="sebit-btn sebit-btn--ghost mt-4 w-full">
             Konzultovat
           </a>
         </div>
@@ -314,7 +313,7 @@
   <section id="kontakt" class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="text-center mb-12" data-aos="fade-up">
-        <h2 class="text-4xl font-bold mb-4">Kontaktujte nás</h2>
+        <h2 class="sebit-h2">Kontaktujte nás</h2>
         <p class="text-lg text-gray-600">Máte dotazy? Rádi vám pomůžeme!</p>
       </div>
 
@@ -339,19 +338,19 @@
         <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
           <form id="contact-form" class="space-y-6">
             <div>
-              <label for="name" class="block text-gray-800 font-medium mb-2">Jméno</label>
-              <input type="text" id="name" name="from_name" required class="w-full border border-gray-300 px-4 py-3 rounded focus:outline-none focus:ring-2 focus:ring-sebit-navy focus:border-sebit-navy" placeholder="Vaše jméno">
+              <label for="name" class="sebit-label">Jméno</label>
+              <input type="text" id="name" name="from_name" required class="sebit-input" placeholder="Vaše jméno">
             </div>
             <div>
-              <label for="email" class="block text-gray-800 font-medium mb-2">Email</label>
-              <input type="email" id="email" name="from_email" required class="w-full border border-gray-300 px-4 py-3 rounded focus:outline-none focus:ring-2 focus:ring-sebit-navy focus:border-sebit-navy" placeholder="váš@email.com">
+              <label for="email" class="sebit-label">Email</label>
+              <input type="email" id="email" name="from_email" required class="sebit-input" placeholder="váš@email.com">
             </div>
             <div>
-              <label for="message" class="block text-gray-800 font-medium mb-2">Zpráva</label>
-              <textarea id="message" name="message" rows="5" required class="w-full border border-gray-300 px-4 py-3 rounded focus:outline-none focus:ring-2 focus:ring-sebit-navy focus:border-sebit-navy" placeholder="Vaše zpráva"></textarea>
+              <label for="message" class="sebit-label">Zpráva</label>
+              <textarea id="message" name="message" required class="sebit-textarea" placeholder="Vaše zpráva"></textarea>
             </div>
             <div id="form-status" class="hidden text-sm font-medium p-3 rounded"></div>
-            <button type="submit" id="submit-btn" class="w-full bg-sebit-navy text-white font-semibold py-3 rounded hover:bg-opacity-90 transition">
+            <button type="submit" id="submit-btn" class="sebit-btn sebit-btn--submit">
               Odeslat zprávu
             </button>
           </form>
@@ -410,80 +409,9 @@
     });
   </script>
 
-  <!-- Inline JS pro "Zjistit více", toggle mobilního menu a skrytí menu při výběru -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  // "Zjistit více" tlačítka
-  document.querySelectorAll('.more-btn').forEach(function(button) {
-    button.addEventListener('click', function(e) {
-      e.preventDefault();
-      // Odstraníme všechny existující extra sekce
-      document.querySelectorAll('.more-info').forEach(el => el.remove());
-      // Získáme text z data-text atributu
-      const text = this.dataset.text;
-      if (!text) {
-        console.warn("Atribut data-text nebyl nalezen u tlačítka!");
-      }
-      
-      let parentElement;
-      // Kontrola šířky okna - pro mobilní zobrazení (<768px)
-      if(window.innerWidth < 768) {
-        // V mobilním zobrazení vložíme sekci hned za přímého rodiče tlačítka
-        parentElement = this.parentElement;
-      } else {
-        // Pro desktopové zobrazení ponecháme původní chování
-        parentElement = this.closest('.service-card') || this.closest('section');
-      }
-      
-      if (!parentElement) {
-        console.error("Nepodařilo se najít rodičovský element.");
-        return;
-      }
-      
-      // Vytvoříme novou sekci s textem
-      const extraSection = document.createElement('section');
-      extraSection.className = "py-20 bg-white more-info";
-      extraSection.style.display = "block";
-      extraSection.style.opacity = "1";
-      extraSection.innerHTML = `
-        <div class="container mx-auto px-4">
-          <div class="text-center mb-12">
-            <p>${text}</p>
-          </div>
-        </div>
-      `;
-      // Vložíme novou sekci za vybraný rodičovský element
-      parentElement.insertAdjacentElement('afterend', extraSection);
-      
-      // Pokud jsme v mobilním zobrazení, posuneme stránku na začátek nové sekce
-      if(window.innerWidth < 768) {
-        extraSection.scrollIntoView({ behavior: 'smooth' });
-      }
-      
-      // Obnovíme AOS, pokud je definován
-      if (typeof AOS !== 'undefined') {
-        AOS.refresh();
-      }
-    });
-  });
   
-  // Toggle mobilního menu
-  const menuButton = document.getElementById("mobile-menu-button");
-  const menu = document.getElementById("mobile-menu");
-  menuButton.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-  });
-  
-  // Skrytí mobilního menu při kliknutí na odkaz
-  document.querySelectorAll('#mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      menu.classList.add('hidden');
-    });
-  });
-});
-</script>
   <!-- SEBIT Shared Components -->
-  <script src="/shared/components.js"></script>
+  <script src="../shared/components.js"></script>
 
   <!-- GDPR Cookie Consent -->
   <script src="/cookie-consent.js"></script>

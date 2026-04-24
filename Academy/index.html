@@ -59,37 +59,21 @@
   <!-- Preconnect pro rychlejší načítání externích zdrojů -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.tailwindcss.com">
-  <link rel="dns-prefetch" href="https://kit.fontawesome.com">
+    <link rel="dns-prefetch" href="https://kit.fontawesome.com">
   <link rel="dns-prefetch" href="https://unpkg.com">
 
   <!-- Google Fonts – Inter (brand typography) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- SEBIT Design System – centralized design tokens -->
-  <link rel="stylesheet" href="/SEBIT Design System/colors_and_type.css">
+  <link rel="stylesheet" href="../SEBIT Design System/colors_and_type.css">
+  <link rel="stylesheet" href="../shared/sebit-components.css">
 
   <!-- Page loader (splash screen) -->
-  <link rel="stylesheet" href="/shared/loader.css">
-  <script src="/shared/loader.js"></script>
+  <link rel="stylesheet" href="../shared/loader.css">
+  <script src="../shared/loader.js"></script>
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          'sebit-navy': '#002B5C',
-          'sebit-lime': '#C6FF00'
-        },
-        fontFamily: {
-          sans: ['Inter', 'sans-serif']
-        }
-      }
-    }
-  }
-  </script>
+  
   <!-- AOS CSS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
   <!-- Font Awesome -->
@@ -98,6 +82,21 @@
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>
     (function() { emailjs.init("YOUR_PUBLIC_KEY"); })();
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'sebit-navy': '#002B5C',
+            'sebit-lime': '#C6FF00'
+          }
+        }
+      }
+    }
   </script>
 </head>
 <body class="antialiased text-gray-800">
@@ -117,11 +116,11 @@
       </button>
       <!-- Desktopové menu -->
       <nav class="hidden md:block">
-        <ul class="flex space-x-6">
-          <li><a href="#hero" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Domů</a></li>
-          <li><a href="#programy" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Programy</a></li>
-          <li><a href="#pro-firmy" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Pro firmy</a></li>
-          <li><a href="#kontakt" class="text-gray-800 font-medium hover:text-sebit-navy pb-1 border-b-2 border-transparent hover:border-sebit-lime transition">Kontakt</a></li>
+        <ul class="sebit-nav">
+          <li><a href="#hero" class="sebit-nav-link">Domů</a></li>
+          <li><a href="#programy" class="sebit-nav-link">Programy</a></li>
+          <li><a href="#pro-firmy" class="sebit-nav-link">Pro firmy</a></li>
+          <li><a href="#kontakt" class="sebit-nav-link">Kontakt</a></li>
         </ul>
       </nav>
     </div>
@@ -147,13 +146,13 @@
     <div class="container mx-auto max-w-5xl px-4 py-10 flex flex-col md:flex-row items-center text-center md:text-left">
       <!-- Textový obsah umístěný vlevo -->
       <div data-aos="fade-right" class="md:flex-1">
-        <h1 class="text-4xl md:text-6xl font-extrabold mb-4">
+        <h1 class="sebit-display text-white mb-4">
           SEBIT Academy
         </h1>
-        <p class="text-lg md:text-2xl mb-8 max-w-2xl">
+        <p class="sebit-lead text-gray-300 mb-8 max-w-2xl">
           Vzděláváme studenty a mladé profesionály v IT. Nabízíme stáže, školení a kurzy zaměřené na praxi a moderní technologie.
         </p>
-        <a href="#kontakt" class="bg-white text-sebit-navy px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100 transition">
+        <a href="#kontakt" class="sebit-btn sebit-btn--primary">
           Kontaktujte nás
         </a>
       </div>
@@ -167,26 +166,26 @@
 <!-- Divize sekce -->
   <section id="divisions" class="py-16 bg-sebit-navy">
   <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+    <div class="sebit-division-grid">
       <!-- Solutions -->
-      <a href="https://sebit.cz" class="block bg-white rounded-lg shadow hover:shadow-2xl transition p-4 h-30 text-center flex flex-col justify-center">
-        <img src="/sebit_solutions_light.svg" alt="SEBIT Solutions" class="mx-auto h-16 mb-2">
-        <p class="text-gray-600 text-sm">IT consulting a projekty na klíč.</p>
+      <a href="https://sebit.cz" class="sebit-division-tile">
+        <img src="/sebit_solutions_light.svg" alt="SEBIT Solutions" class="sebit-division-tile__logo">
+        <p class="sebit-division-tile__desc">IT consulting a projekty na klíč.</p>
       </a>
       <!-- Labs -->
-      <a href="https://sebit.cz/labs" class="block bg-white rounded-lg shadow hover:shadow-2xl transition p-4 h-30 text-center flex flex-col justify-center">
-        <img src="/sebit_labs_light.svg" alt="SEBIT Labs" class="mx-auto h-16 mb-2">
-        <p class="text-gray-600 text-sm">Inovační laboratoře a prototypy digitálních řešení.</p>
+      <a href="https://sebit.cz/labs" class="sebit-division-tile">
+        <img src="/sebit_labs_light.svg" alt="SEBIT Labs" class="sebit-division-tile__logo">
+        <p class="sebit-division-tile__desc">Inovační laboratoře a prototypy digitálních řešení.</p>
       </a>
       <!-- Medical -->
-      <a href="https://sebit.cz/Medical" class="block bg-white rounded-lg shadow hover:shadow-2xl transition p-4 h-30 text-center flex flex-col justify-center">
-        <img src="/sebit_medical_light.svg" alt="SEBIT Medical" class="mx-auto h-16 mb-2">
-        <p class="text-gray-600 text-sm">Zdraví na prvním místě.</p>
+      <a href="https://sebit.cz/Medical" class="sebit-division-tile">
+        <img src="/sebit_medical_light.svg" alt="SEBIT Medical" class="sebit-division-tile__logo">
+        <p class="sebit-division-tile__desc">Zdraví na prvním místě.</p>
       </a>
       <!-- Academy -->
-      <a href="https://sebit.cz/Academy" class="block bg-white rounded-lg shadow hover:shadow-2xl transition p-4 h-30 text-center flex flex-col justify-center">
-        <img src="/sebit_academy_light.svg" alt="SEBIT Academy" class="mx-auto h-16 mb-2">
-        <p class="text-gray-600 text-sm">Studentské stáže a kurzy IT dovedností.</p>
+      <a href="https://sebit.cz/Academy" class="sebit-division-tile border-b-2 border-sebit-lime">
+        <img src="/sebit_academy_light.svg" alt="SEBIT Academy" class="sebit-division-tile__logo">
+        <p class="sebit-division-tile__desc">Studentské stáže a kurzy IT dovedností.</p>
       </a>
     </div>
   </div>
@@ -196,63 +195,63 @@
   <section id="programy" class="py-20">
     <div class="container mx-auto px-4">
       <div class="text-center mb-12" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-4">Vzdělávací programy</h2>
+        <h2 class="sebit-h2">Vzdělávací programy</h2>
         <p class="text-gray-600">
           Nabízíme strukturované programy pro studenty i začínající profesionály – od stáží po pokročilé technické kurzy.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Studentské stáže -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="100">
-          <div class="w-12 h-12 bg-sebit-navy rounded-full flex items-center justify-center mb-4">
-            <i class="fas fa-graduation-cap text-sebit-lime text-xl"></i>
+        <div class="sebit-card flex flex-col" data-aos="fade-up" data-aos-delay="100">
+          <div class="sebit-card__icon">
+            <i class="fas fa-graduation-cap"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2">Studentské stáže</h3>
-          <p class="text-gray-600 flex-grow">
+          <h3 class="sebit-card__title">Studentské stáže</h3>
+          <p class="sebit-card__body flex-grow">
             Nabízíme placené stáže v délce 3–6 měsíců pro studenty VŠ a VOŠ. Každý stážista dostane mentora a pracuje na reálných projektech.
           </p>
-          <ul class="text-sm text-gray-500 mt-3 space-y-1 flex-grow">
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Reálné projekty, ne jen podpora</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Osobní mentor</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Možnost pokračování po studiu</li>
+          <ul class="sebit-list mt-3 space-y-1 flex-grow">
+            <li class="sebit-list__item">Reálné projekty, ne jen podpora</li>
+            <li class="sebit-list__item">Osobní mentor</li>
+            <li class="sebit-list__item">Možnost pokračování po studiu</li>
           </ul>
-          <a href="#kontakt" class="mt-4 block mx-auto bg-gray-200 text-black px-4 py-2 rounded hover:bg-sebit-navy hover:text-white transition text-center">
+          <a href="#kontakt" class="sebit-btn sebit-btn--ghost mt-4 w-full">
             Mám zájem
           </a>
         </div>
         <!-- IT kurzy pro začátečníky -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="200">
-          <div class="w-12 h-12 bg-sebit-navy rounded-full flex items-center justify-center mb-4">
-            <i class="fas fa-laptop-code text-sebit-lime text-xl"></i>
+        <div class="sebit-card flex flex-col" data-aos="fade-up" data-aos-delay="200">
+          <div class="sebit-card__icon">
+            <i class="fas fa-laptop-code"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2">IT kurzy pro začátečníky</h3>
-          <p class="text-gray-600 flex-grow">
+          <h3 class="sebit-card__title">IT kurzy pro začátečníky</h3>
+          <p class="sebit-card__body flex-grow">
             Praktické kurzy pro ty, kdo chtějí vstoupit do světa IT. Učíme programování, databáze a základy testování s důrazem na pracovní trh.
           </p>
-          <ul class="text-sm text-gray-500 mt-3 space-y-1 flex-grow">
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Základy programování (Java, Python)</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> SQL a databázové základy</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Úvod do testování SW</li>
+          <ul class="sebit-list mt-3 space-y-1 flex-grow">
+            <li class="sebit-list__item">Základy programování (Java, Python)</li>
+            <li class="sebit-list__item">SQL a databázové základy</li>
+            <li class="sebit-list__item">Úvod do testování SW</li>
           </ul>
-          <a href="#kontakt" class="mt-4 block mx-auto bg-gray-200 text-black px-4 py-2 rounded hover:bg-sebit-navy hover:text-white transition text-center">
+          <a href="#kontakt" class="sebit-btn sebit-btn--ghost mt-4 w-full">
             Zjistit termíny
           </a>
         </div>
         <!-- Pokročilé kurzy -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="300">
-          <div class="w-12 h-12 bg-sebit-navy rounded-full flex items-center justify-center mb-4">
-            <i class="fas fa-code-branch text-sebit-lime text-xl"></i>
+        <div class="sebit-card flex flex-col" data-aos="fade-up" data-aos-delay="300">
+          <div class="sebit-card__icon">
+            <i class="fas fa-code-branch"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2">Pokročilé technické kurzy</h3>
-          <p class="text-gray-600 flex-grow">
+          <h3 class="sebit-card__title">Pokročilé technické kurzy</h3>
+          <p class="sebit-card__body flex-grow">
             Pro IT profesionály, kteří chtějí rozšířit své dovednosti v oblastech, které trh aktuálně vyžaduje.
           </p>
-          <ul class="text-sm text-gray-500 mt-3 space-y-1 flex-grow">
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Java / Spring Boot</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Cloud (AWS / Azure)</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> DevOps a CI/CD pipeline</li>
+          <ul class="sebit-list mt-3 space-y-1 flex-grow">
+            <li class="sebit-list__item">Java / Spring Boot</li>
+            <li class="sebit-list__item">Cloud (AWS / Azure)</li>
+            <li class="sebit-list__item">DevOps a CI/CD pipeline</li>
           </ul>
-          <a href="#kontakt" class="mt-4 block mx-auto bg-gray-200 text-black px-4 py-2 rounded hover:bg-sebit-navy hover:text-white transition text-center">
+          <a href="#kontakt" class="sebit-btn sebit-btn--ghost mt-4 w-full">
             Kontaktovat
           </a>
         </div>
@@ -264,46 +263,46 @@
   <section id="pro-firmy" class="py-20 bg-gray-100">
     <div class="container mx-auto px-4">
       <div class="text-center mb-12" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-4">Pro firmy</h2>
+        <h2 class="sebit-h2">Školení pro firmy</h2>
         <p class="text-gray-600">
           Pomáháme firmám rozvíjet technické znalosti jejich týmů a nacházet talentované juniory přímo z naší sítě absolventů.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Firemní školení -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="100">
-          <div class="w-12 h-12 bg-sebit-navy rounded-full flex items-center justify-center mb-4">
-            <i class="fas fa-chalkboard-teacher text-sebit-lime text-xl"></i>
+        <!-- Firemní školení na míru -->
+        <div class="sebit-card flex flex-col" data-aos="fade-up" data-aos-delay="100">
+          <div class="sebit-card__icon">
+            <i class="fas fa-chalkboard-teacher"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2">Firemní školení na míru</h3>
-          <p class="text-gray-600 flex-grow">
-            Navrhujeme a realizujeme školení přizpůsobená konkrétním potřebám vašeho týmu. Od krátkých workshopů po vícetýdenní technické programy.
+          <h3 class="sebit-card__title">Firemní školení na míru</h3>
+          <p class="sebit-card__body flex-grow">
+            Navrhneme školení přesně podle potřeb vaší firmy. Zaměřujeme se na praktické dovednosti vašich týmů.
           </p>
-          <ul class="text-sm text-gray-500 mt-3 space-y-1">
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Přizpůsobený obsah i tempo výuky</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Lektoři z praxe, ne z učebnic</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Online i prezenční formát</li>
+          <ul class="sebit-list mt-3 space-y-1 flex-grow">
+            <li class="sebit-list__item">Agilní metodiky (Scrum, Kanban)</li>
+            <li class="sebit-list__item">Bezpečný vývoj aplikací (OWASP)</li>
+            <li class="sebit-list__item">Architektura mikroslužeb</li>
           </ul>
-          <a href="#kontakt" class="mt-4 block mx-auto bg-gray-200 text-black px-4 py-2 rounded hover:bg-sebit-navy hover:text-white transition text-center">
-            Poptat školení
+          <a href="#kontakt" class="sebit-btn sebit-btn--ghost mt-4 w-full">
+            Konzultovat
           </a>
         </div>
-        <!-- Junior pipeline -->
-        <div class="p-6 bg-white rounded-lg shadow transition transform hover:-translate-y-1 hover:shadow-2xl flex flex-col" data-aos="fade-up" data-aos-delay="200">
-          <div class="w-12 h-12 bg-sebit-navy rounded-full flex items-center justify-center mb-4">
-            <i class="fas fa-user-plus text-sebit-lime text-xl"></i>
+        <!-- Upskilling a Reskilling -->
+        <div class="sebit-card flex flex-col" data-aos="fade-up" data-aos-delay="200">
+          <div class="sebit-card__icon">
+            <i class="fas fa-user-graduate"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2">Junior talent pipeline</h3>
-          <p class="text-gray-600 flex-grow">
-            Hledáte schopné juniory? Propojíme vás s absolventy našich kurzů a stáží, kteří jsou připraveni nastoupit. Bez recruitingových poplatků.
+          <h3 class="sebit-card__title">Upskilling & Reskilling</h3>
+          <p class="sebit-card__body flex-grow">
+            Pomáháme firmám s přeškolováním zaměstnanců do IT rolí nebo s posunem stávajících vývojářů na nové technologie.
           </p>
-          <ul class="text-sm text-gray-500 mt-3 space-y-1">
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Prověření kandidáti</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Znáte jejich dovednosti předem</li>
-            <li><i class="fas fa-check text-sebit-navy mr-1"></i> Rychlý onboarding</li>
+          <ul class="sebit-list mt-3 space-y-1 flex-grow">
+            <li class="sebit-list__item">Z non-IT do IT (např. Tester)</li>
+            <li class="sebit-list__item">Posun na nové frameworky</li>
+            <li class="sebit-list__item">Soft-skills pro IT (komunikace, prezentace)</li>
           </ul>
-          <a href="#kontakt" class="mt-4 block mx-auto bg-gray-200 text-black px-4 py-2 rounded hover:bg-sebit-navy hover:text-white transition text-center">
-            Navázat spolupráci
+          <a href="#kontakt" class="sebit-btn sebit-btn--ghost mt-4 w-full">
+            Konzultovat
           </a>
         </div>
       </div>
@@ -314,7 +313,7 @@
   <section id="kontakt" class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="text-center mb-12" data-aos="fade-up">
-        <h2 class="text-4xl font-bold mb-4">Kontaktujte nás</h2>
+        <h2 class="sebit-h2">Kontaktujte nás</h2>
         <p class="text-lg text-gray-600">Máte dotazy? Rádi vám pomůžeme!</p>
       </div>
 
@@ -339,19 +338,19 @@
         <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
           <form id="contact-form" class="space-y-6">
             <div>
-              <label for="name" class="block text-gray-800 font-medium mb-2">Jméno</label>
-              <input type="text" id="name" name="from_name" required class="w-full border border-gray-300 px-4 py-3 rounded focus:outline-none focus:ring-2 focus:ring-sebit-navy focus:border-sebit-navy" placeholder="Vaše jméno">
+              <label for="name" class="sebit-label">Jméno</label>
+              <input type="text" id="name" name="from_name" required class="sebit-input" placeholder="Vaše jméno">
             </div>
             <div>
-              <label for="email" class="block text-gray-800 font-medium mb-2">Email</label>
-              <input type="email" id="email" name="from_email" required class="w-full border border-gray-300 px-4 py-3 rounded focus:outline-none focus:ring-2 focus:ring-sebit-navy focus:border-sebit-navy" placeholder="váš@email.com">
+              <label for="email" class="sebit-label">Email</label>
+              <input type="email" id="email" name="from_email" required class="sebit-input" placeholder="váš@email.com">
             </div>
             <div>
-              <label for="message" class="block text-gray-800 font-medium mb-2">Zpráva</label>
-              <textarea id="message" name="message" rows="5" required class="w-full border border-gray-300 px-4 py-3 rounded focus:outline-none focus:ring-2 focus:ring-sebit-navy focus:border-sebit-navy" placeholder="Vaše zpráva"></textarea>
+              <label for="message" class="sebit-label">Zpráva</label>
+              <textarea id="message" name="message" required class="sebit-textarea" placeholder="Vaše zpráva"></textarea>
             </div>
             <div id="form-status" class="hidden text-sm font-medium p-3 rounded"></div>
-            <button type="submit" id="submit-btn" class="w-full bg-sebit-navy text-white font-semibold py-3 rounded hover:bg-opacity-90 transition">
+            <button type="submit" id="submit-btn" class="sebit-btn sebit-btn--submit">
               Odeslat zprávu
             </button>
           </form>
@@ -410,80 +409,9 @@
     });
   </script>
 
-  <!-- Inline JS pro "Zjistit více", toggle mobilního menu a skrytí menu při výběru -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  // "Zjistit více" tlačítka
-  document.querySelectorAll('.more-btn').forEach(function(button) {
-    button.addEventListener('click', function(e) {
-      e.preventDefault();
-      // Odstraníme všechny existující extra sekce
-      document.querySelectorAll('.more-info').forEach(el => el.remove());
-      // Získáme text z data-text atributu
-      const text = this.dataset.text;
-      if (!text) {
-        console.warn("Atribut data-text nebyl nalezen u tlačítka!");
-      }
-      
-      let parentElement;
-      // Kontrola šířky okna - pro mobilní zobrazení (<768px)
-      if(window.innerWidth < 768) {
-        // V mobilním zobrazení vložíme sekci hned za přímého rodiče tlačítka
-        parentElement = this.parentElement;
-      } else {
-        // Pro desktopové zobrazení ponecháme původní chování
-        parentElement = this.closest('.service-card') || this.closest('section');
-      }
-      
-      if (!parentElement) {
-        console.error("Nepodařilo se najít rodičovský element.");
-        return;
-      }
-      
-      // Vytvoříme novou sekci s textem
-      const extraSection = document.createElement('section');
-      extraSection.className = "py-20 bg-white more-info";
-      extraSection.style.display = "block";
-      extraSection.style.opacity = "1";
-      extraSection.innerHTML = `
-        <div class="container mx-auto px-4">
-          <div class="text-center mb-12">
-            <p>${text}</p>
-          </div>
-        </div>
-      `;
-      // Vložíme novou sekci za vybraný rodičovský element
-      parentElement.insertAdjacentElement('afterend', extraSection);
-      
-      // Pokud jsme v mobilním zobrazení, posuneme stránku na začátek nové sekce
-      if(window.innerWidth < 768) {
-        extraSection.scrollIntoView({ behavior: 'smooth' });
-      }
-      
-      // Obnovíme AOS, pokud je definován
-      if (typeof AOS !== 'undefined') {
-        AOS.refresh();
-      }
-    });
-  });
   
-  // Toggle mobilního menu
-  const menuButton = document.getElementById("mobile-menu-button");
-  const menu = document.getElementById("mobile-menu");
-  menuButton.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-  });
-  
-  // Skrytí mobilního menu při kliknutí na odkaz
-  document.querySelectorAll('#mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      menu.classList.add('hidden');
-    });
-  });
-});
-</script>
   <!-- SEBIT Shared Components -->
-  <script src="/shared/components.js"></script>
+  <script src="../shared/components.js"></script>
 
   <!-- GDPR Cookie Consent -->
   <script src="/cookie-consent.js"></script>
